@@ -1,0 +1,1 @@
+{"version":3,"file":"useIsRouteActive.js","sourceRoot":"","sources":["../../src/hooks/useIsRouteActive.tsx"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,iBAAiB,CAAC;AAEhD,MAAM,UAAU,gBAAgB,CAAC,IAAY,EAAE,KAAc;IACzD,IAAM,KAAK,GAAG,aAAa,CAAC;QACxB,IAAI,MAAA;QACJ,KAAK,OAAA;QACL,MAAM,EAAE,KAAK;KAChB,CAAC,CAAC;IAEH,OAAO,KAAK,IAAI,IAAI,CAAC;AACzB,CAAC"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"useTabBarIsHidden.js","sourceRoot":"","sources":["../../src/hooks/useTabBarIsHidden.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,OAAO,CAAC;AACnC,OAAO,EAAE,mBAAmB,EAAE,MAAM,YAAY,CAAC;AAEjD,MAAM,UAAU,iBAAiB;IACtB,IAAA,MAAM,GAAI,UAAU,CAAC,mBAAmB,CAAC,GAAnC,CAAoC;IACjD,OAAO,MAAM,CAAC;AAClB,CAAC"}

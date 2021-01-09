@@ -1,0 +1,1 @@
+{"version":3,"file":"getTabIconSize.js","sourceRoot":"","sources":["../../../../../src/components/tabNavigation/TabBarItem/util/getTabIconSize.ts"],"names":[],"mappings":"AAEA,MAAM,UAAU,cAAc,CAAC,OAA2B;IACtD,OAAO,OAAO,KAAK,UAAU,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC;AAC5C,CAAC"}

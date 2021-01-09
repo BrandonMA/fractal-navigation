@@ -1,0 +1,1 @@
+{"version":3,"file":"NavigationBarButton.js","sourceRoot":"","sources":["../../../src/components/stackNavigation/NavigationBarButton.tsx"],"names":[],"mappings":";;;;;;;;;;;AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAC1B,OAAO,EAAE,UAAU,EAAmB,MAAM,mBAAmB,CAAC;AAIhE,MAAM,UAAU,mBAAmB,CAAC,KAA+B;IAC/D,OAAO,oBAAC,UAAU,eAAK,KAAK,IAAE,OAAO,EAAC,0BAA0B,IAAG,CAAC;AACxE,CAAC"}
