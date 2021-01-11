@@ -10,10 +10,11 @@ import {
     useHistory,
     NavigationBarButton,
     AnimatedRoute,
-    Redirect
+    Redirect,
+    PlatformBarCenterView
 } from './src';
 import { Entypo as BaseEntypo } from '@expo/vector-icons';
-import { Button, FractalThemeIdentifierContext, PaddedContainer, Text } from '@bma98/fractal-ui';
+import { BaseBox, Button, FractalThemeIdentifierContext, PaddedContainer, Text } from '@bma98/fractal-ui';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TabBar, TabBarItem, TabNavigator, TabScreen } from './src/components/tabNavigation';
 
@@ -111,7 +112,16 @@ function NavigationCode(): JSX.Element {
                             </SafeAreaView>
                         </StackScreenContent>
                     </StackScreen>
-                    <StackScreen path={homeProfileRoute} navBarConfig={<PlatformBarConfig title='Profile' />}>
+                    <StackScreen
+                        path={homeProfileRoute}
+                        navBarConfig={
+                            <PlatformBarConfig>
+                                <PlatformBarCenterView>
+                                    <BaseBox backgroundColor={'textColor'} width={24} height={24} borderRadius={'m'} />
+                                </PlatformBarCenterView>
+                            </PlatformBarConfig>
+                        }
+                    >
                         <StackScreenContent>
                             <SafeAreaView>
                                 <PaddedContainer>

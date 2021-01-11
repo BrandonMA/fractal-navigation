@@ -24,7 +24,7 @@
         "react-native-screens": "~2.15.0"
     },
     "dependencies": {
-        "@bma98/fractal-ui": "^1.6.3",
+        "@bma98/fractal-ui": "^1.6.4",
         "@bma98/size-class": "^2.0.4",
         "@expo/vector-icons": "^12.0.0",
         "@shopify/restyle": "^1.4.0",

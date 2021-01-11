@@ -12,11 +12,13 @@ export const NavigationBarCenter = memo(
 
         return (
             <BaseBox justifyContent='center' flex={1} flexDirection='row' alignItems='center' flexBasis={0}>
-                {children ?? (
+                {children ? (
+                    children
+                ) : title ? (
                     <Text textAlign='center' variant='navigationBarTitle'>
                         {title}
                     </Text>
-                )}
+                ) : null}
             </BaseBox>
         );
     }
