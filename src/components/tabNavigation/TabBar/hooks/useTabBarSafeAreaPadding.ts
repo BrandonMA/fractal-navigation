@@ -2,7 +2,7 @@ import { EdgeInsets } from 'react-native-safe-area-context';
 import { useMemo } from 'react';
 import { TabBarPosition } from '../../../../context/TabBarPositionProvider/types/TabBarPosition';
 
-type TabBarPaddingStyles = { paddingBottom: number } | { paddingLeft: number } | { paddingRight: number };
+export type TabBarPaddingStyles = { paddingBottom: number } | { paddingLeft: number } | { paddingRight: number };
 
 export function useTabBarSafeAreaPadding(safeAreaInsets: EdgeInsets, tabBarPosition: TabBarPosition): TabBarPaddingStyles {
     return useMemo(() => {

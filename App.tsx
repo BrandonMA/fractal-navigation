@@ -11,12 +11,16 @@ import {
     NavigationBarButton,
     AnimatedRoute,
     Redirect,
-    PlatformBarCenterView
+    PlatformBarCenterView,
+    TabBarHiddenContext,
+    TabBar,
+    TabBarItem,
+    TabNavigator,
+    TabScreen
 } from './src';
 import { Entypo as BaseEntypo } from '@expo/vector-icons';
 import { BaseBox, Button, FractalThemeIdentifierContext, PaddedContainer, Text } from '@bma98/fractal-ui';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { TabBar, TabBarItem, TabNavigator, TabScreen } from './src/components/tabNavigation';
 
 const Entypo = memo(BaseEntypo);
 
@@ -72,16 +76,20 @@ function MainTabBar(): JSX.Element {
 
 function ComputersScreen(): JSX.Element {
     const [, setCurrentThemeIdentifier] = useContext(FractalThemeIdentifierContext);
+    const [, setTabBarHidden] = useContext(TabBarHiddenContext);
 
     const toggleTheme = useCallback(() => setCurrentThemeIdentifier((currentValue) => (currentValue === 'light' ? 'dark' : 'light')), [
         setCurrentThemeIdentifier
     ]);
 
+    const toggleTabBar = useCallback(() => setTabBarHidden((currentValue) => !currentValue), [setTabBarHidden]);
+
     return (
         <SafeAreaView>
             <PaddedContainer>
                 <Text marginBottom={'m'}>Computers Screen!</Text>
-                <Button variant={'mainInteractiveColor'} onPress={toggleTheme} text={'Toggle Theme'} />
+                <Button variant={'mainInteractiveColor'} onPress={toggleTheme} text={'Toggle Theme'} marginBottom={'m'} />
+                <Button variant={'alternativeInteractiveColor'} onPress={toggleTabBar} text={'Toggle Tab Bar'} />
             </PaddedContainer>
         </SafeAreaView>
     );

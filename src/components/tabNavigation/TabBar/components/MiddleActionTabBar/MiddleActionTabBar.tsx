@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { TabBarProps } from '../../types/TabBarProps';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useMiddleActionTabBarChildren } from './hooks/useMiddleActionTabBarChildren';
@@ -6,13 +6,12 @@ import { MiddleTabBarShape } from './components/MiddleTabBarShape';
 import { useTabBarPositionValues } from '../../hooks/useTabBarPositionValues';
 import { getValueForTabBarPosition } from '../../util/getValueForTabBarPosition';
 import { getBottomOffsetForCircularTabBarButton } from './util/getBottomOffsetForCircularTabBarButton';
-import { BaseBox, FractalTheme } from '@bma98/fractal-ui';
+import { BaseBox } from '@bma98/fractal-ui';
 import { useTabBarSafeAreaPadding } from '../../hooks/useTabBarSafeAreaPadding';
-import { useTheme } from '@shopify/restyle';
+import { SideView } from './components/SideView';
 
 export function MiddleActionTabBar(props: TabBarProps): JSX.Element {
     const { children, style, tabBarPosition } = props;
-    const theme = useTheme<FractalTheme>();
     const safeAreaInsets = useSafeAreaInsets();
     const positionValues = useTabBarPositionValues(tabBarPosition);
     const { flexDirection, width, height, bottom, left, right } = positionValues;
@@ -30,46 +29,27 @@ export function MiddleActionTabBar(props: TabBarProps): JSX.Element {
     const constantDimension = 'auto';
     const floatingWidth = getValueForTabBarPosition(tabBarPosition, '100%', constantDimension, constantDimension);
     const floatingHeight = getValueForTabBarPosition(tabBarPosition, constantDimension, '100%', '100%');
+    const floatingStyle = useMemo(() => [tabBarSafeAreaPadding, style], [tabBarSafeAreaPadding, style]);
 
     return (
         <>
             <BaseBox width={width} height={height} bottom={bottom} left={left} right={right} position={'absolute'} style={style}>
                 <BaseBox width={width} height={height} flexDirection={flexDirection} position={'relative'}>
-                    <BaseBox
-                        style={tabBarSafeAreaPadding}
-                        flexDirection={flexDirection}
-                        backgroundColor={'tabBarBackground'}
-                        flexGrow={1}
-                        flexBasis={0}
-                        shadowColor={'shadowColor'}
-                        shadowOffset={theme.shadowProperties.offset}
-                        shadowOpacity={theme.shadowProperties.opacity}
-                        shadowRadius={theme.shadowProperties.radius}
-                    >
+                    <SideView tabBarSafeAreaPadding={tabBarSafeAreaPadding} flexDirection={flexDirection}>
                         {leftChildren}
-                    </BaseBox>
+                    </SideView>
                     <BaseBox zIndex={1000} flexDirection={'column'} backgroundColor={'transparent'}>
                         <MiddleTabBarShape tabBarPosition={tabBarPosition} />
                         <BaseBox backgroundColor={'tabBarBackground'} flexGrow={1} width={'100%'} />
                     </BaseBox>
-                    <BaseBox
-                        style={tabBarSafeAreaPadding}
-                        flexDirection={flexDirection}
-                        backgroundColor={'tabBarBackground'}
-                        flexGrow={1}
-                        flexBasis={0}
-                        shadowColor={'shadowColor'}
-                        shadowOffset={theme.shadowProperties.offset}
-                        shadowOpacity={theme.shadowProperties.opacity}
-                        shadowRadius={theme.shadowProperties.radius}
-                    >
+                    <SideView tabBarSafeAreaPadding={tabBarSafeAreaPadding} flexDirection={flexDirection}>
                         {rightChildren}
-                    </BaseBox>
+                    </SideView>
                 </BaseBox>
             </BaseBox>
             <BaseBox
                 {...floatingOffset}
-                style={tabBarSafeAreaPadding}
+                style={floatingStyle}
                 alignItems={'center'}
                 justifyContent={'center'}
                 backgroundColor={'transparent'}
