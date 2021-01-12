@@ -21,7 +21,6 @@ export function AnimatedRouteContainer({ match, children }: AnimatedRouteContain
     const isRouteActive = match != null;
     const opacityValue = useRef(new Animated.Value(isRouteActive ? 1 : 0)).current;
     const [visible, setVisible] = useState(isRouteActive);
-    const [initialShowDone, setInitialShowDone] = useState(false);
     const setVisibleToFalse = useCallback(() => setVisible(false), [setVisible]);
     const hide = useHideAnimation(opacityValue, setVisibleToFalse);
     const show = useShowAnimation(opacityValue);
@@ -33,21 +32,15 @@ export function AnimatedRouteContainer({ match, children }: AnimatedRouteContain
     useLayoutEffect(() => {
         if (isRouteActive) {
             setVisible(true);
-            setInitialShowDone(true);
-        }
-    }, [setVisible, isRouteActive, setInitialShowDone]);
-
-    useEffect(() => {
-        if (isRouteActive) {
             show();
         }
-    }, [isRouteActive, visible, show]);
+    }, [setVisible, isRouteActive, show]);
 
     useEffect(() => {
-        if (!isRouteActive && initialShowDone) {
+        if (!isRouteActive && visible) {
             hide();
         }
-    }, [isRouteActive, initialShowDone, hide]);
+    }, [isRouteActive, visible, hide]);
 
     return visible ? <MemoizedContainer style={finalStyle}>{children}</MemoizedContainer> : null;
 }

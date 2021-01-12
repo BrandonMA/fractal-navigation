@@ -10,7 +10,6 @@ export function AnimatedRouteContainer(_a) {
     var isRouteActive = match != null;
     var opacityValue = useRef(new Animated.Value(isRouteActive ? 1 : 0)).current;
     var _b = useState(isRouteActive), visible = _b[0], setVisible = _b[1];
-    var _c = useState(false), initialShowDone = _c[0], setInitialShowDone = _c[1];
     var setVisibleToFalse = useCallback(function () { return setVisible(false); }, [setVisible]);
     var hide = useHideAnimation(opacityValue, setVisibleToFalse);
     var show = useShowAnimation(opacityValue);
@@ -20,19 +19,14 @@ export function AnimatedRouteContainer(_a) {
     useLayoutEffect(function () {
         if (isRouteActive) {
             setVisible(true);
-            setInitialShowDone(true);
-        }
-    }, [setVisible, isRouteActive, setInitialShowDone]);
-    useEffect(function () {
-        if (isRouteActive) {
             show();
         }
-    }, [isRouteActive, visible, show]);
+    }, [setVisible, isRouteActive, show]);
     useEffect(function () {
-        if (!isRouteActive && initialShowDone) {
+        if (!isRouteActive && visible) {
             hide();
         }
-    }, [isRouteActive, initialShowDone, hide]);
+    }, [isRouteActive, visible, hide]);
     return visible ? React.createElement(MemoizedContainer, { style: finalStyle }, children) : null;
 }
 //# sourceMappingURL=AnimatedRouteContainer.js.map
