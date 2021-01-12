@@ -24,7 +24,7 @@ function WhiteContentPhone({ children }: StackScreenModalProps): JSX.Element {
     );
 }
 
-export function StackScreenModal(props: StackScreenModalProps): JSX.Element {
+export function StackScreenModal({ children }: StackScreenModalProps): JSX.Element {
     const opacityValue = useRef(new Animated.Value(0)).current;
     const { goBack } = useHistory();
     const show = useShowAnimation(opacityValue);
@@ -38,7 +38,7 @@ export function StackScreenModal(props: StackScreenModalProps): JSX.Element {
 
     return (
         <DimmedModal visible justifyContent={justifyContent} alignItems={'center'} onDismiss={goBack}>
-            <Wrapper>{props.children}</Wrapper>
+            <Wrapper>{children}</Wrapper>
         </DimmedModal>
     );
 }

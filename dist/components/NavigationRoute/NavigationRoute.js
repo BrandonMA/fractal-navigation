@@ -28,7 +28,7 @@ import { useScreenActivityState } from './hooks/useScreenActivityState';
 import { useTheme } from '@shopify/restyle';
 import { useInitialRenderDone } from './hooks/useInitialRenderDone';
 export function NavigationRoute(_a) {
-    var path = _a.path, style = _a.style, children = _a.children, isTabScreen = _a.isTabScreen, stackPresentation = _a.stackPresentation, others = __rest(_a, ["path", "style", "children", "isTabScreen", "stackPresentation"]);
+    var path = _a.path, style = _a.style, children = _a.children, isTabScreen = _a.isTabScreen, _b = _a.stackPresentation, stackPresentation = _b === void 0 ? 'push' : _b, others = __rest(_a, ["path", "style", "children", "isTabScreen", "stackPresentation"]);
     var theme = useTheme();
     var basePath = path !== null && path !== void 0 ? path : '/';
     var renderChildren = useCallback(function () { return children; }, [children]);
@@ -38,7 +38,7 @@ export function NavigationRoute(_a) {
         style,
         theme.colors.background
     ]);
-    return (React.createElement(Screen, __assign({}, others, { activityState: activityState, active: activityState, stackPresentation: stackPresentation !== null && stackPresentation !== void 0 ? stackPresentation : 'push', style: styles }),
+    return (React.createElement(Screen, __assign({}, others, { activityState: activityState, active: activityState, stackPresentation: stackPresentation, style: styles }),
         React.createElement(Route, { path: basePath }, initialRenderDone ? renderChildren : null)));
 }
 //# sourceMappingURL=NavigationRoute.js.map

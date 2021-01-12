@@ -9,7 +9,7 @@ import {
     StackScreenContent,
     useHistory,
     NavigationBarButton,
-    AnimatedRoute,
+    FadeRoute,
     Redirect,
     PlatformBarCenterView,
     TabBarHiddenContext,
@@ -99,7 +99,7 @@ function NavigationCode(): JSX.Element {
     const renderSearchIcon = useCallback((color: string): JSX.Element => <Entypo name='magnifying-glass' size={20} color={color} />, []);
 
     return (
-        <TabNavigator path={baseRoute} defaultRoute={homeRoute} tabBar={<MainTabBar />}>
+        <TabNavigator tabBar={<MainTabBar />}>
             <TabScreen path={homeRoute}>
                 <StackNavigator path={homeRoute}>
                     <StackScreen
@@ -177,7 +177,7 @@ function App(): JSX.Element {
 
     return (
         <FractalNavigationRoot handleThemeManually>
-            <AnimatedRoute path={authenticationRoute}>
+            <FadeRoute path={authenticationRoute}>
                 <SafeAreaView>
                     <PaddedContainer>
                         <Text variant={'title'} marginBottom={'m'}>
@@ -186,13 +186,13 @@ function App(): JSX.Element {
                         <Button onPress={authenticate} variant={'mainInteractiveColor'} text={'Authenticate'} />
                     </PaddedContainer>
                 </SafeAreaView>
-            </AnimatedRoute>
+            </FadeRoute>
             {authenticated ? (
-                <AnimatedRoute path={baseRoute}>
+                <FadeRoute path={baseRoute}>
                     <NavigationCode />
-                </AnimatedRoute>
+                </FadeRoute>
             ) : null}
-            {authenticated ? <Redirect from={authenticationRoute} to={baseRoute} /> : <Redirect from={'/'} to={authenticationRoute} />}
+            {authenticated ? <Redirect from={authenticationRoute} to={homeRoute} /> : <Redirect from={'/'} to={authenticationRoute} />}
         </FractalNavigationRoot>
     );
 }

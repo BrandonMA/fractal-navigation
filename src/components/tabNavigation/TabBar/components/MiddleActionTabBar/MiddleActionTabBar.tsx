@@ -10,8 +10,7 @@ import { BaseBox } from '@bma98/fractal-ui';
 import { useTabBarSafeAreaPadding } from '../../hooks/useTabBarSafeAreaPadding';
 import { SideView } from './components/SideView';
 
-export function MiddleActionTabBar(props: TabBarProps): JSX.Element {
-    const { children, style, tabBarPosition } = props;
+export function MiddleActionTabBar({ children, style, tabBarPosition }: TabBarProps): JSX.Element {
     const safeAreaInsets = useSafeAreaInsets();
     const positionValues = useTabBarPositionValues(tabBarPosition);
     const { flexDirection, width, height, bottom, left, right } = positionValues;

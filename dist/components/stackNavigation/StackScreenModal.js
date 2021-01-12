@@ -11,7 +11,8 @@ function WhiteContentPhone(_a) {
     var children = _a.children;
     return (React.createElement(Cell, { overflow: 'hidden', borderRadius: 'm', marginTop: 'm', width: '90%', height: '85%' }, children));
 }
-export function StackScreenModal(props) {
+export function StackScreenModal(_a) {
+    var children = _a.children;
     var opacityValue = useRef(new Animated.Value(0)).current;
     var goBack = useHistory().goBack;
     var show = useShowAnimation(opacityValue);
@@ -22,6 +23,6 @@ export function StackScreenModal(props) {
         show();
     }, [show]);
     return (React.createElement(DimmedModal, { visible: true, justifyContent: justifyContent, alignItems: 'center', onDismiss: goBack },
-        React.createElement(Wrapper, null, props.children)));
+        React.createElement(Wrapper, null, children)));
 }
 //# sourceMappingURL=StackScreenModal.js.map

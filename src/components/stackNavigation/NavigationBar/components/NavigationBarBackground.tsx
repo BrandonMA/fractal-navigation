@@ -7,19 +7,18 @@ interface NavigationBarBackgroundProps {
 }
 
 export const NavigationBarBackground = memo(
-    (props: NavigationBarBackgroundProps): JSX.Element => {
-        const { children } = props;
-        const theme = useTheme<FractalTheme>();
+    ({ children }: NavigationBarBackgroundProps): JSX.Element => {
+        const { navigationBar, shadowProperties } = useTheme<FractalTheme>();
 
         return (
             <BaseBox
                 backgroundColor='navigationBarBackground'
                 flexDirection='row'
-                height={theme.navigationBar.navigationBarHeight}
-                shadowOffset={theme.shadowProperties.offset}
+                height={navigationBar.navigationBarHeight}
+                shadowOffset={shadowProperties.offset}
                 shadowColor='shadowColor'
-                shadowOpacity={theme.shadowProperties.opacity}
-                shadowRadius={theme.shadowProperties.radius}
+                shadowOpacity={shadowProperties.opacity}
+                shadowRadius={shadowProperties.radius}
                 width={'100%'}
                 zIndex={2000}
                 paddingHorizontal='m'

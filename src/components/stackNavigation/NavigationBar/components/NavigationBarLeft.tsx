@@ -13,8 +13,7 @@ interface NavigationBarLeftProps {
 }
 
 export const NavigationBarLeft = memo(
-    (props: NavigationBarLeftProps): JSX.Element => {
-        const { children, showBackButton, backTitle, goBack } = props;
+    ({ children, showBackButton, backTitle, goBack }: NavigationBarLeftProps): JSX.Element => {
         const renderChevronLeft = useCallback(
             (color) => <Entypo name='chevron-left' size={22} style={{ marginLeft: -6 }} color={color} />,
             []

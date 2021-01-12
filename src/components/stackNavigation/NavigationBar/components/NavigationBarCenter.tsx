@@ -7,9 +7,7 @@ interface NavigationBarCenterProps {
 }
 
 export const NavigationBarCenter = memo(
-    (props: NavigationBarCenterProps): JSX.Element => {
-        const { children, title } = props;
-
+    ({ children, title }: NavigationBarCenterProps): JSX.Element => {
         return (
             <BaseBox justifyContent='center' flex={1} flexDirection='row' alignItems='center' flexBasis={0}>
                 {children ? (

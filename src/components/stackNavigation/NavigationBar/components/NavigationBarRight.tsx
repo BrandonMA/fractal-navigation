@@ -6,9 +6,7 @@ interface NavigationBarRightProps {
 }
 
 export const NavigationBarRight = memo(
-    (props: NavigationBarRightProps): JSX.Element => {
-        const { children } = props;
-
+    ({ children }: NavigationBarRightProps): JSX.Element => {
         return (
             <BaseBox justifyContent='flex-end' flex={1} flexDirection='row' alignItems='center' flexBasis={0}>
                 {children}

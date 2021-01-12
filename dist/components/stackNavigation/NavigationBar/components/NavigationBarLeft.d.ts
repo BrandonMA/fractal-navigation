@@ -5,5 +5,5 @@ interface NavigationBarLeftProps {
     backTitle?: string;
     goBack: () => void;
 }
-export declare const NavigationBarLeft: React.MemoExoticComponent<(props: NavigationBarLeftProps) => JSX.Element>;
+export declare const NavigationBarLeft: React.MemoExoticComponent<({ children, showBackButton, backTitle, goBack }: NavigationBarLeftProps) => JSX.Element>;
 export {};

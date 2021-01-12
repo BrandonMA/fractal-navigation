@@ -8,16 +8,16 @@ const emptyConfig = {};
 
 export function usePlatformBarStyles(): unknown {
     if (Platform.OS === 'ios' || Platform.OS === 'android') {
-        const theme = useTheme<FractalTheme>();
+        const { colors, textVariants } = useTheme<FractalTheme>();
         return useMemo(() => {
             return {
-                backgroundColor: theme.colors.navigationBarBackground,
-                titleColor: theme.colors.navigationBarTitleColor,
-                color: theme.colors.navigationBarButtonColor,
-                titleFontSize: theme.textVariants.navigationBarTitle.fontSize,
-                titleFontWeight: theme.textVariants.navigationBarTitle.fontWeight
+                backgroundColor: colors.navigationBarBackground,
+                titleColor: colors.navigationBarTitleColor,
+                color: colors.navigationBarButtonColor,
+                titleFontSize: textVariants.navigationBarTitle.fontSize,
+                titleFontWeight: textVariants.navigationBarTitle.fontWeight
             };
-        }, [theme.colors, theme.textVariants]);
+        }, [colors, textVariants]);
     } else {
         return emptyConfig;
     }

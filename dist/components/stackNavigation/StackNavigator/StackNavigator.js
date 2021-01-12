@@ -29,11 +29,10 @@ import { useIsRouteActive } from '../../../hooks/useIsRouteActive';
 import { getMarginInsets } from '../../../util/getMarginInsets';
 import { useTabBarInsets } from '../../../hooks/useTabBarInsets';
 import { StackNavigatorRootPathProvider } from '../../../context/StackNavigatorRootPathProvider';
-export function StackNavigator(props) {
-    var path = props.path, children = props.children, style = props.style, others = __rest(props, ["path", "children", "style"]);
+export function StackNavigator(_a) {
+    var _b = _a.path, path = _b === void 0 ? '' : _b, children = _a.children, style = _a.style, others = __rest(_a, ["path", "children", "style"]);
     var pathname = useLocation().pathname;
-    var basePath = path !== null && path !== void 0 ? path : '';
-    var isRouteActive = useIsRouteActive(basePath, false);
+    var isRouteActive = useIsRouteActive(path, false);
     var prevChildrenRef = useRef([]);
     var tabBarInsets = useTabBarInsets();
     var marginInsets = getMarginInsets(tabBarInsets, false, true);
@@ -54,7 +53,7 @@ export function StackNavigator(props) {
             prevChildrenRef.current = childrenToRender;
         }
     }, [childrenToRender, isRouteActive]);
-    return (React.createElement(StackNavigatorRootPathProvider, { initialValue: basePath },
+    return (React.createElement(StackNavigatorRootPathProvider, { initialValue: path },
         React.createElement(ScreenStack, __assign({ style: finalStyle }, others), isRouteActive ? childrenToRender : prevChildrenRef.current)));
 }
 //# sourceMappingURL=StackNavigator.js.map

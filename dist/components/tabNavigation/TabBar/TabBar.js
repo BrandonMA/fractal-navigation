@@ -25,14 +25,13 @@ import { useHideTabBarAnimation } from './hooks/useHideTabBarAnimation';
 import { getTabBarComponent } from './util/getTabBarComponent';
 import { useTabBarInsetsForPosition } from './hooks/useTabBarInsetsForPosition';
 import { TabBarPositionContext } from '../../../context/TabBarPositionProvider';
-export function TabBar(props) {
-    var style = props.style, tabBarVariant = props.tabBarVariant, tabBarPosition = props.tabBarPosition, others = __rest(props, ["style", "tabBarVariant", "tabBarPosition"]);
+export function TabBar(_a) {
+    var style = _a.style, tabBarVariant = _a.tabBarVariant, tabBarPosition = _a.tabBarPosition, others = __rest(_a, ["style", "tabBarVariant", "tabBarPosition"]);
     var TabBar = getTabBarComponent(tabBarVariant);
     var animatedStyle = useHideTabBarAnimation(tabBarPosition, tabBarVariant, style);
-    var _a = useContext(TabBarPositionContext), setTabBarPosition = _a[1];
+    var _b = useContext(TabBarPositionContext), setTabBarPosition = _b[1];
     // Allow the tabBarPosition to be passed as a prop as the value is probably never going to change on run time.
     // So, we use an useLayoutEffect hook to update the UI before the first render.
-    // This could be handled with Context, but is easier to keep all global state on atoms for consistency.
     useLayoutEffect(function () {
         setTabBarPosition(tabBarPosition);
     }, [tabBarPosition, setTabBarPosition]);

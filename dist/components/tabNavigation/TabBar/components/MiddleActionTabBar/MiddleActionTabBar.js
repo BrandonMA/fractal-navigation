@@ -19,13 +19,13 @@ import { getBottomOffsetForCircularTabBarButton } from './util/getBottomOffsetFo
 import { BaseBox } from '@bma98/fractal-ui';
 import { useTabBarSafeAreaPadding } from '../../hooks/useTabBarSafeAreaPadding';
 import { SideView } from './components/SideView';
-export function MiddleActionTabBar(props) {
-    var children = props.children, style = props.style, tabBarPosition = props.tabBarPosition;
+export function MiddleActionTabBar(_a) {
+    var children = _a.children, style = _a.style, tabBarPosition = _a.tabBarPosition;
     var safeAreaInsets = useSafeAreaInsets();
     var positionValues = useTabBarPositionValues(tabBarPosition);
     var flexDirection = positionValues.flexDirection, width = positionValues.width, height = positionValues.height, bottom = positionValues.bottom, left = positionValues.left, right = positionValues.right;
     var tabBarSafeAreaPadding = useTabBarSafeAreaPadding(safeAreaInsets, tabBarPosition);
-    var _a = useMiddleActionTabBarChildren(children), leftChildren = _a[0], middleChild = _a[1], rightChildren = _a[2];
+    var _b = useMiddleActionTabBarChildren(children), leftChildren = _b[0], middleChild = _b[1], rightChildren = _b[2];
     var constantOffset = getBottomOffsetForCircularTabBarButton(tabBarPosition);
     var floatingOffset = getValueForTabBarPosition(tabBarPosition, { bottom: constantOffset }, { left: constantOffset }, { right: constantOffset });
     var constantDimension = 'auto';

@@ -20,23 +20,14 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-import React, { useMemo } from 'react';
-import { ScreenContainer } from 'react-native-screens';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { BaseBox } from '@bma98/fractal-ui';
-export function TabNavigator(_a) {
-    var tabBar = _a.tabBar, children = _a.children, style = _a.style, others = __rest(_a, ["tabBar", "children", "style"]);
-    var finalStyle = useMemo(function () {
-        return [
-            style,
-            {
-                flex: 1
-            }
-        ];
-    }, [style]);
-    return (React.createElement(SafeAreaProvider, null,
-        React.createElement(BaseBox, { flex: 1, overflow: 'hidden' },
-            React.createElement(ScreenContainer, __assign({}, others, { style: finalStyle }), children),
-            tabBar)));
+import React, { useCallback } from 'react';
+import { Route } from '../../react-router';
+import { FadeRouteAnimator } from './FadeRouteAnimator';
+export function FadeRoute(_a) {
+    var children = _a.children, others = __rest(_a, ["children"]);
+    var render = useCallback(function (routeProps) {
+        return React.createElement(FadeRouteAnimator, __assign({}, routeProps), children);
+    }, [children]);
+    return React.createElement(Route, __assign({}, others), render);
 }
-//# sourceMappingURL=TabNavigator.js.map
+//# sourceMappingURL=index.js.map

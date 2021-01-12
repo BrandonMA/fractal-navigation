@@ -30,4 +30,4 @@ export function AnimatedRoute(_a) {
     }, [children]);
     return React.createElement(Route, __assign({}, others), render);
 }
-//# sourceMappingURL=AnimatedRoute.js.map
+//# sourceMappingURL=FadeRoute.js.map

@@ -1,4 +1,4 @@
-export * from './AnimatedRoute';
+export * from './FadeRoute';
 export * from './NavigationRoute';
 export * from './scrollables';
 export * from './stackNavigation';

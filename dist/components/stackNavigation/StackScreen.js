@@ -27,8 +27,8 @@ import { NavigationBar } from './NavigationBar';
 import { Platform, StatusBar } from 'react-native';
 import { PlatformBar } from './PlatformBar';
 import { usePlatformBarStyles } from './PlatformBar/hooks/usePlatformBarStyles';
-export function StackScreen(props) {
-    var children = props.children, navBarConfig = props.navBarConfig, stackPresentation = props.stackPresentation, path = props.path, others = __rest(props, ["children", "navBarConfig", "stackPresentation", "path"]);
+export function StackScreen(_a) {
+    var children = _a.children, navBarConfig = _a.navBarConfig, stackPresentation = _a.stackPresentation, path = _a.path, others = __rest(_a, ["children", "navBarConfig", "stackPresentation", "path"]);
     var goBack = useHistory().goBack;
     var styleProps = usePlatformBarStyles();
     var isNavigationBarForNativeModal = stackPresentation === 'modal' && navBarConfig != null && (Platform.OS === 'ios' || Platform.OS === 'android');

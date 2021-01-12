@@ -5,16 +5,16 @@ import { useTheme } from '@shopify/restyle';
 var emptyConfig = {};
 export function usePlatformBarStyles() {
     if (Platform.OS === 'ios' || Platform.OS === 'android') {
-        var theme_1 = useTheme();
+        var _a = useTheme(), colors_1 = _a.colors, textVariants_1 = _a.textVariants;
         return useMemo(function () {
             return {
-                backgroundColor: theme_1.colors.navigationBarBackground,
-                titleColor: theme_1.colors.navigationBarTitleColor,
-                color: theme_1.colors.navigationBarButtonColor,
-                titleFontSize: theme_1.textVariants.navigationBarTitle.fontSize,
-                titleFontWeight: theme_1.textVariants.navigationBarTitle.fontWeight
+                backgroundColor: colors_1.navigationBarBackground,
+                titleColor: colors_1.navigationBarTitleColor,
+                color: colors_1.navigationBarButtonColor,
+                titleFontSize: textVariants_1.navigationBarTitle.fontSize,
+                titleFontWeight: textVariants_1.navigationBarTitle.fontWeight
             };
-        }, [theme_1.colors, theme_1.textVariants]);
+        }, [colors_1, textVariants_1]);
     }
     else {
         return emptyConfig;

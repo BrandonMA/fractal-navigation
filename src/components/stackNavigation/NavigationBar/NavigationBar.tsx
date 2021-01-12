@@ -12,11 +12,10 @@ import { useStackNavigatorRootPath } from '../../../hooks/useStackNavigatorRootP
 
 // Render might be called multiple times because of useLocation and useRouteMatch.
 // But as long as we keep diving components and using memo, the performance hit is actually nothing to worry about.
-export function NavigationBar(props: NavigationBarProps): JSX.Element | null {
-    const { hidden, title, hideBackButton, backTitle, path, children } = props;
+export function NavigationBar({ hidden, title, hideBackButton, backTitle, path = '', children }: NavigationBarProps): JSX.Element | null {
     const { goBack } = useHistory();
-    const isRouteActiveAndExact = useIsRouteActive(path ?? '', true);
-    const activeRouteSections = useActiveRouteSections(path ?? '');
+    const isRouteActiveAndExact = useIsRouteActive(path, true);
+    const activeRouteSections = useActiveRouteSections(path);
     const [leftChild, centerChild, rightChild] = useNavigationBarChildren(children);
     const stackNavigatorRootPath = useStackNavigatorRootPath();
     const isRootNavigationBar = stackNavigatorRootPath === path;

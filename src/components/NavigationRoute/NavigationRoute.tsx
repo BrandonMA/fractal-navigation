@@ -14,7 +14,14 @@ export interface NavigationRouteProps extends Omit<ScreenProps, 'stackPresentati
     isTabScreen?: boolean;
 }
 
-export function NavigationRoute({ path, style, children, isTabScreen, stackPresentation, ...others }: NavigationRouteProps): JSX.Element {
+export function NavigationRoute({
+    path,
+    style,
+    children,
+    isTabScreen,
+    stackPresentation = 'push',
+    ...others
+}: NavigationRouteProps): JSX.Element {
     const theme = useTheme<FractalTheme>();
     const basePath = path ?? '/';
     const renderChildren = useCallback(() => children, [children]);
@@ -30,7 +37,7 @@ export function NavigationRoute({ path, style, children, isTabScreen, stackPrese
             {...others}
             activityState={activityState} // This prop only works on native.
             active={activityState as never}
-            stackPresentation={stackPresentation ?? 'push'}
+            stackPresentation={stackPresentation}
             style={styles}
         >
             <Route path={basePath}>{initialRenderDone ? renderChildren : null}</Route>

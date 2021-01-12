@@ -10,12 +10,12 @@ import { NavigationBarBackground } from './components/NavigationBarBackground';
 import { useStackNavigatorRootPath } from '../../../hooks/useStackNavigatorRootPath';
 // Render might be called multiple times because of useLocation and useRouteMatch.
 // But as long as we keep diving components and using memo, the performance hit is actually nothing to worry about.
-export function NavigationBar(props) {
-    var hidden = props.hidden, title = props.title, hideBackButton = props.hideBackButton, backTitle = props.backTitle, path = props.path, children = props.children;
+export function NavigationBar(_a) {
+    var hidden = _a.hidden, title = _a.title, hideBackButton = _a.hideBackButton, backTitle = _a.backTitle, _b = _a.path, path = _b === void 0 ? '' : _b, children = _a.children;
     var goBack = useHistory().goBack;
-    var isRouteActiveAndExact = useIsRouteActive(path !== null && path !== void 0 ? path : '', true);
-    var activeRouteSections = useActiveRouteSections(path !== null && path !== void 0 ? path : '');
-    var _a = useNavigationBarChildren(children), leftChild = _a[0], centerChild = _a[1], rightChild = _a[2];
+    var isRouteActiveAndExact = useIsRouteActive(path, true);
+    var activeRouteSections = useActiveRouteSections(path);
+    var _c = useNavigationBarChildren(children), leftChild = _c[0], centerChild = _c[1], rightChild = _c[2];
     var stackNavigatorRootPath = useStackNavigatorRootPath();
     var isRootNavigationBar = stackNavigatorRootPath === path;
     return hidden ? null : (React.createElement(NavigationBarBackground, null,

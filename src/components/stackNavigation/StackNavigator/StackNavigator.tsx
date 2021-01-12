@@ -13,11 +13,9 @@ export interface StackNavigatorProps extends Omit<ScreenStackProps, 'children'> 
     path?: string;
 }
 
-export function StackNavigator(props: StackNavigatorProps): JSX.Element {
-    const { path, children, style, ...others } = props;
+export function StackNavigator({ path = '', children, style, ...others }: StackNavigatorProps): JSX.Element {
     const { pathname } = useLocation();
-    const basePath = path ?? '';
-    const isRouteActive = useIsRouteActive(basePath, false);
+    const isRouteActive = useIsRouteActive(path, false);
     const prevChildrenRef = useRef<Array<JSX.Element>>([]);
     const tabBarInsets = useTabBarInsets();
     const marginInsets = getMarginInsets(tabBarInsets, false, true);
@@ -46,7 +44,7 @@ export function StackNavigator(props: StackNavigatorProps): JSX.Element {
     }, [childrenToRender, isRouteActive]);
 
     return (
-        <StackNavigatorRootPathProvider initialValue={basePath}>
+        <StackNavigatorRootPathProvider initialValue={path}>
             <ScreenStack style={finalStyle} {...others}>
                 {isRouteActive ? childrenToRender : prevChildrenRef.current}
             </ScreenStack>

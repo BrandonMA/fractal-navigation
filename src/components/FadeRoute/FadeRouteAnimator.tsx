@@ -3,7 +3,7 @@ import { match } from '../../react-router';
 import { Animated, StyleSheet } from 'react-native';
 import { useHideAnimation, useShowAnimation } from '@bma98/fractal-ui';
 
-export interface AnimatedRouteContainerProps {
+interface FadeRouteAnimator {
     match: match | null;
     children: JSX.Element;
 }
@@ -17,7 +17,7 @@ const MemoizedContainer = memo(({ style, children }: MemoizedContainerProps) => 
     return <Animated.View style={style}>{children}</Animated.View>;
 });
 
-export function AnimatedRouteContainer({ match, children }: AnimatedRouteContainerProps): JSX.Element | null {
+export function FadeRouteAnimator({ match, children }: FadeRouteAnimator): JSX.Element | null {
     const isRouteActive = match != null;
     const opacityValue = useRef(new Animated.Value(isRouteActive ? 1 : 0)).current;
     const [visible, setVisible] = useState(isRouteActive);
