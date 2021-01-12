@@ -26,18 +26,18 @@ export const TabBarItem = memo(
                 ? tabBarItemCompactSpacerSize
                 : getValueForLargeSize(widthSizeGroup[0], tabBarItemLargeSpacerSize, tabBarItemCompactSpacerSize);
         const goToTab = useGoToTab(path, isRouteActive);
-        const theme = useTheme<FractalTheme>();
+        const { colors } = useTheme<FractalTheme>();
         const tabBarItemColorIdentifier = isRouteActive ? 'tabBarItemActive' : 'tabBarItemInactive';
 
         return (
             <TabBarItemContainer
                 {...others}
                 onPress={goToTab}
-                bg={theme.colors.mainInteractiveColor}
+                bg={colors.mainInteractiveColor}
                 widthSizeGroup={widthSizeGroup}
-                highlightColor={theme.colors.mainInteractiveColor600}
+                highlightColor={colors.mainInteractiveColor600}
             >
-                {children(theme.colors[variant === 'circular' ? 'white' : tabBarItemColorIdentifier], iconSize)}
+                {children(colors[variant === 'circular' ? 'white' : tabBarItemColorIdentifier], iconSize)}
                 <Spacer {...spacerSize} />
                 {variant === 'circular' && title != null ? null : <Text variant={tabBarItemColorIdentifier}>{title}</Text>}
             </TabBarItemContainer>

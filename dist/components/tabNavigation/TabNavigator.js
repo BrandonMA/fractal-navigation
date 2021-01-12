@@ -26,7 +26,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Redirect } from '../../react-router';
 import { BaseBox } from '@bma98/fractal-ui';
 export function TabNavigator(props) {
-    var defaultRoute = props.defaultRoute, tabBar = props.tabBar, children = props.children, style = props.style, others = __rest(props, ["defaultRoute", "tabBar", "children", "style"]);
+    var defaultRoute = props.defaultRoute, _a = props.path, path = _a === void 0 ? '/' : _a, tabBar = props.tabBar, children = props.children, style = props.style, others = __rest(props, ["defaultRoute", "path", "tabBar", "children", "style"]);
     var finalStyle = useMemo(function () {
         return [
             style,
@@ -38,7 +38,7 @@ export function TabNavigator(props) {
     return (React.createElement(SafeAreaProvider, null,
         React.createElement(BaseBox, { flex: 1, overflow: 'hidden' },
             React.createElement(ScreenContainer, __assign({}, others, { style: finalStyle }), children),
-            React.createElement(Redirect, { exact: true, from: '/', to: defaultRoute }),
+            React.createElement(Redirect, { exact: true, from: path, to: defaultRoute }),
             tabBar)));
 }
 //# sourceMappingURL=TabNavigator.js.map

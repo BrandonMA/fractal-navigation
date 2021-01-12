@@ -43,10 +43,10 @@ export var TabBarItem = memo(function (props) {
         ? tabBarItemCompactSpacerSize
         : getValueForLargeSize(widthSizeGroup[0], tabBarItemLargeSpacerSize, tabBarItemCompactSpacerSize);
     var goToTab = useGoToTab(path, isRouteActive);
-    var theme = useTheme();
+    var colors = useTheme().colors;
     var tabBarItemColorIdentifier = isRouteActive ? 'tabBarItemActive' : 'tabBarItemInactive';
-    return (React.createElement(TabBarItemContainer, __assign({}, others, { onPress: goToTab, bg: theme.colors.mainInteractiveColor, widthSizeGroup: widthSizeGroup, highlightColor: theme.colors.mainInteractiveColor600 }),
-        children(theme.colors[variant === 'circular' ? 'white' : tabBarItemColorIdentifier], iconSize),
+    return (React.createElement(TabBarItemContainer, __assign({}, others, { onPress: goToTab, bg: colors.mainInteractiveColor, widthSizeGroup: widthSizeGroup, highlightColor: colors.mainInteractiveColor600 }),
+        children(colors[variant === 'circular' ? 'white' : tabBarItemColorIdentifier], iconSize),
         React.createElement(Spacer, __assign({}, spacerSize)),
         variant === 'circular' && title != null ? null : React.createElement(Text, { variant: tabBarItemColorIdentifier }, title)));
 });

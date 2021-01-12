@@ -7,11 +7,12 @@ import { BaseBox } from '@bma98/fractal-ui';
 export interface TabNavigatorProps extends ScreenContainerProps {
     children: Array<JSX.Element> | JSX.Element;
     defaultRoute: string;
+    path?: string;
     tabBar: JSX.Element;
 }
 
 export function TabNavigator(props: TabNavigatorProps): JSX.Element {
-    const { defaultRoute, tabBar, children, style, ...others } = props;
+    const { defaultRoute, path = '/', tabBar, children, style, ...others } = props;
 
     const finalStyle = useMemo(() => {
         return [
@@ -28,7 +29,7 @@ export function TabNavigator(props: TabNavigatorProps): JSX.Element {
                 <ScreenContainer {...others} style={finalStyle}>
                     {children}
                 </ScreenContainer>
-                <Redirect exact from='/' to={defaultRoute} />
+                <Redirect exact from={path} to={defaultRoute} />
                 {tabBar}
             </BaseBox>
         </SafeAreaProvider>

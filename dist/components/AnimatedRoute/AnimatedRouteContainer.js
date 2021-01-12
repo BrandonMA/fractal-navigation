@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, StyleSheet } from 'react-native';
 import { useHideAnimation, useShowAnimation } from '@bma98/fractal-ui';
 var MemoizedContainer = memo(function (_a) {
@@ -16,7 +16,7 @@ export function AnimatedRouteContainer(_a) {
     var finalStyle = useMemo(function () {
         return [StyleSheet.absoluteFill, { opacity: opacityValue, zIndex: isRouteActive ? 1000 : 0 }];
     }, [opacityValue, isRouteActive]);
-    useLayoutEffect(function () {
+    useEffect(function () {
         if (isRouteActive) {
             setVisible(true);
             show();

@@ -16,6 +16,7 @@ import { Dimensions, Pressable } from 'react-native';
 import { useTabBarPosition } from '../../../../hooks/useTabBarPosition';
 export var BasicTabBarItem = memo(function (props) {
     var widthSizeGroup = props.widthSizeGroup, highlightColor = props.highlightColor;
+    var size = widthSizeGroup[0];
     var tabBarPosition = useTabBarPosition();
     var ripple = useMemo(function () {
         return {
@@ -25,8 +26,8 @@ export var BasicTabBarItem = memo(function (props) {
         };
     }, [highlightColor]);
     var style = useMemo(function () {
-        return __assign(__assign({}, sharedTabBarItemStyles), { flexGrow: 1, flexDirection: tabBarPosition !== 'bottom' ? 'column' : getValueForLargeSize(widthSizeGroup[0], 'row', 'column') });
-    }, [widthSizeGroup, tabBarPosition]);
+        return __assign(__assign({}, sharedTabBarItemStyles), { flexGrow: 1, flexDirection: tabBarPosition !== 'bottom' ? 'column' : getValueForLargeSize(size, 'row', 'column') });
+    }, [size, tabBarPosition]);
     return React.createElement(Pressable, __assign({}, props, { style: style, android_ripple: ripple }));
 });
 //# sourceMappingURL=BasicTabBarItem.js.map

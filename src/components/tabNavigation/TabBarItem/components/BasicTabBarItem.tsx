@@ -13,6 +13,7 @@ export interface BasicTabBarItemProps {
 export const BasicTabBarItem = memo(
     (props: BasicTabBarItemProps): JSX.Element => {
         const { widthSizeGroup, highlightColor } = props;
+        const [size] = widthSizeGroup;
         const tabBarPosition = useTabBarPosition();
 
         const ripple = useMemo(() => {
@@ -27,9 +28,9 @@ export const BasicTabBarItem = memo(
             return {
                 ...sharedTabBarItemStyles,
                 flexGrow: 1,
-                flexDirection: tabBarPosition !== 'bottom' ? 'column' : getValueForLargeSize(widthSizeGroup[0], 'row', 'column')
+                flexDirection: tabBarPosition !== 'bottom' ? 'column' : getValueForLargeSize(size, 'row', 'column')
             };
-        }, [widthSizeGroup, tabBarPosition]);
+        }, [size, tabBarPosition]);
 
         return <Pressable {...props} style={style} android_ripple={ripple} />;
     }

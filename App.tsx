@@ -99,7 +99,7 @@ function NavigationCode(): JSX.Element {
     const renderSearchIcon = useCallback((color: string): JSX.Element => <Entypo name='magnifying-glass' size={20} color={color} />, []);
 
     return (
-        <TabNavigator defaultRoute={homeRoute} tabBar={<MainTabBar />}>
+        <TabNavigator path={baseRoute} defaultRoute={homeRoute} tabBar={<MainTabBar />}>
             <TabScreen path={homeRoute}>
                 <StackNavigator path={homeRoute}>
                     <StackScreen
@@ -177,7 +177,7 @@ function App(): JSX.Element {
 
     return (
         <FractalNavigationRoot handleThemeManually>
-            <AnimatedRoute path={authenticationRoute} exact>
+            <AnimatedRoute path={authenticationRoute}>
                 <SafeAreaView>
                     <PaddedContainer>
                         <Text variant={'title'} marginBottom={'m'}>
@@ -187,9 +187,11 @@ function App(): JSX.Element {
                     </PaddedContainer>
                 </SafeAreaView>
             </AnimatedRoute>
-            <AnimatedRoute path={baseRoute}>
-                <NavigationCode />
-            </AnimatedRoute>
+            {authenticated ? (
+                <AnimatedRoute path={baseRoute}>
+                    <NavigationCode />
+                </AnimatedRoute>
+            ) : null}
             {authenticated ? <Redirect from={authenticationRoute} to={baseRoute} /> : <Redirect from={'/'} to={authenticationRoute} />}
         </FractalNavigationRoot>
     );

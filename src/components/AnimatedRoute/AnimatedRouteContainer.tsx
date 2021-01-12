@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { match } from '../../react-router';
 import { Animated, StyleSheet } from 'react-native';
 import { useHideAnimation, useShowAnimation } from '@bma98/fractal-ui';
@@ -29,7 +29,7 @@ export function AnimatedRouteContainer({ match, children }: AnimatedRouteContain
         return [StyleSheet.absoluteFill, { opacity: opacityValue, zIndex: isRouteActive ? 1000 : 0 }];
     }, [opacityValue, isRouteActive]);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (isRouteActive) {
             setVisible(true);
             show();
