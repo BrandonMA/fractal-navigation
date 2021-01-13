@@ -3,7 +3,7 @@ import { ViewProps } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 interface StackScreenContentProps extends Omit<ViewProps, 'children'> {
-    children: JSX.Element;
+    children: JSX.Element | Array<JSX.Element>;
 }
 
 export function StackScreenContent(props: StackScreenContentProps): JSX.Element {
