@@ -9,7 +9,7 @@ function WhiteContentDesktop(_a) {
 }
 function WhiteContentPhone(_a) {
     var children = _a.children;
-    return (React.createElement(Cell, { overflow: 'hidden', borderRadius: 'm', marginTop: 'm', width: '90%', height: '85%' }, children));
+    return (React.createElement(Cell, { overflow: 'hidden', borderRadius: 'm', marginTop: 'm', width: '90%', height: '95%' }, children));
 }
 export function StackScreenModal(_a) {
     var children = _a.children;

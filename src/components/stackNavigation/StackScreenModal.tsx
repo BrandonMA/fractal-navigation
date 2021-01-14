@@ -18,7 +18,7 @@ function WhiteContentDesktop({ children }: StackScreenModalProps): JSX.Element {
 
 function WhiteContentPhone({ children }: StackScreenModalProps): JSX.Element {
     return (
-        <Cell overflow={'hidden'} borderRadius={'m'} marginTop={'m'} width={'90%'} height={'85%'}>
+        <Cell overflow={'hidden'} borderRadius={'m'} marginTop={'m'} width={'90%'} height={'95%'}>
             {children}
         </Cell>
     );
