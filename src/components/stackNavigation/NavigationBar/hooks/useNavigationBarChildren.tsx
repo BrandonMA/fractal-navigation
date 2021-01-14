@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { NavigationBarCenterView, NavigationBarLeftView, NavigationBarRightView } from '../../NavigationBarViews';
+import { ScreenStackHeaderCenterView, ScreenStackHeaderLeftView, ScreenStackHeaderRightView } from 'react-native-screens';
 
 export function useNavigationBarChildren(
     children: Array<JSX.Element> | JSX.Element | undefined
@@ -10,21 +11,20 @@ export function useNavigationBarChildren(
         let rightChild: JSX.Element | null = null;
 
         React.Children.forEach(children, (child) => {
-            if (child?.type.name === 'NavigationBarLeftView') {
+            if (child?.type === NavigationBarLeftView) {
                 leftChild = child;
-            } else if (child?.type.name === 'NavigationBarCenterView') {
+            } else if (child?.type === NavigationBarCenterView) {
                 centerChild = child;
-            } else if (child?.type.name === 'NavigationBarRightView') {
+            } else if (child?.type === NavigationBarRightView) {
                 rightChild = child;
-            } else if (child?.type.name === 'ScreenStackHeaderRightView') {
+            } else if (child?.type === ScreenStackHeaderRightView) {
                 rightChild = <NavigationBarRightView {...child.props} />;
-            } else if (child?.type.name === 'ScreenStackHeaderCenterView') {
+            } else if (child?.type === ScreenStackHeaderCenterView) {
                 centerChild = <NavigationBarCenterView {...child.props} />;
-            } else if (child?.type.name === 'ScreenStackHeaderLeftView') {
+            } else if (child?.type === ScreenStackHeaderLeftView) {
                 leftChild = <NavigationBarLeftView {...child.props} />;
             }
         });
-        console.log(children);
         return [leftChild, centerChild, rightChild];
     }, [children]);
 }
