@@ -10,13 +10,14 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import React from 'react';
+import { View } from 'react-native';
 export function NavigationBarLeftView(props) {
-    return React.createElement(React.Fragment, __assign({}, props));
+    return React.createElement(View, __assign({}, props));
 }
 export function NavigationBarCenterView(props) {
-    return React.createElement(React.Fragment, __assign({}, props));
+    return React.createElement(View, __assign({}, props));
 }
 export function NavigationBarRightView(props) {
-    return React.createElement(React.Fragment, __assign({}, props));
+    return React.createElement(View, __assign({}, props));
 }
 //# sourceMappingURL=index.js.map

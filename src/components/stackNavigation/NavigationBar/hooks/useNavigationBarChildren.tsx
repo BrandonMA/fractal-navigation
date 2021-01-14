@@ -24,6 +24,7 @@ export function useNavigationBarChildren(
                 leftChild = <NavigationBarLeftView {...child.props} />;
             }
         });
+        console.log(children);
         return [leftChild, centerChild, rightChild];
     }, [children]);
 }

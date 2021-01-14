@@ -36,6 +36,7 @@ export function useNavigationBarChildren(children) {
                 leftChild = React.createElement(NavigationBarLeftView, __assign({}, child.props));
             }
         });
+        console.log(children);
         return [leftChild, centerChild, rightChild];
     }, [children]);
 }
