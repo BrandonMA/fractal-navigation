@@ -1,13 +1,14 @@
 import React from 'react';
-import { useHistory } from '../../react-router';
 import { NavigationRoute, NavigationRouteProps } from '../NavigationRoute/NavigationRoute';
 import { NavigationBar } from './NavigationBar';
 import { Platform, StatusBar } from 'react-native';
 import { PlatformBar } from './PlatformBar';
 import { usePlatformBarStyles } from './PlatformBar/hooks/usePlatformBarStyles';
+import { useHistory } from '../../react-router';
 
 interface StackScreenProps extends NavigationRouteProps {
     navBarConfig?: JSX.Element;
+    rootScreen?: boolean;
 }
 
 export function StackScreen({ children, navBarConfig, stackPresentation, path, ...others }: StackScreenProps): JSX.Element {

@@ -5,5 +5,6 @@ export interface NavigationRouteProps extends Omit<ScreenProps, 'stackPresentati
     children?: Array<JSX.Element> | JSX.Element | React.ReactNode;
     stackPresentation?: StackPresentationTypes;
     isTabScreen?: boolean;
+    isRootRoute?: boolean;
 }
-export declare function NavigationRoute({ path, style, children, isTabScreen, stackPresentation, ...others }: NavigationRouteProps): JSX.Element;
+export declare function NavigationRoute({ path, style, children, isTabScreen, stackPresentation, isRootRoute, ...others }: NavigationRouteProps): JSX.Element;

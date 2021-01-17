@@ -103,6 +103,7 @@ function NavigationCode(): JSX.Element {
             <TabScreen path={homeRoute}>
                 <StackNavigator path={homeRoute}>
                     <StackScreen
+                        isRootRoute
                         path={homeRoute}
                         navBarConfig={
                             <PlatformBarConfig title='Home' largeTitle>
@@ -176,7 +177,7 @@ function App(): JSX.Element {
     const authenticate = useCallback(() => setAuthenticated(true), [setAuthenticated]);
 
     return (
-        <FractalNavigationRoot handleThemeManually>
+        <FractalNavigationRoot>
             <FadeRoute path={authenticationRoute}>
                 <SafeAreaView>
                     <PaddedContainer>

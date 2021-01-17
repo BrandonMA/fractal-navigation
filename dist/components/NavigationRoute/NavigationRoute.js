@@ -27,18 +27,21 @@ import { StyleSheet } from 'react-native';
 import { useScreenActivityState } from './hooks/useScreenActivityState';
 import { useTheme } from '@shopify/restyle';
 import { useInitialRenderDone } from './hooks/useInitialRenderDone';
+import { useAnimatedStyles } from './hooks/useAnimatedStyles';
 export function NavigationRoute(_a) {
-    var path = _a.path, style = _a.style, children = _a.children, isTabScreen = _a.isTabScreen, _b = _a.stackPresentation, stackPresentation = _b === void 0 ? 'push' : _b, others = __rest(_a, ["path", "style", "children", "isTabScreen", "stackPresentation"]);
+    var _b = _a.path, path = _b === void 0 ? '/' : _b, style = _a.style, children = _a.children, isTabScreen = _a.isTabScreen, _c = _a.stackPresentation, stackPresentation = _c === void 0 ? 'push' : _c, _d = _a.isRootRoute, isRootRoute = _d === void 0 ? false : _d, others = __rest(_a, ["path", "style", "children", "isTabScreen", "stackPresentation", "isRootRoute"]);
     var theme = useTheme();
-    var basePath = path !== null && path !== void 0 ? path : '/';
     var renderChildren = useCallback(function () { return children; }, [children]);
-    var activityState = useScreenActivityState(basePath, isTabScreen !== null && isTabScreen !== void 0 ? isTabScreen : false);
+    var activityState = useScreenActivityState(path, isTabScreen !== null && isTabScreen !== void 0 ? isTabScreen : false);
     var initialRenderDone = useInitialRenderDone(activityState);
-    var styles = useMemo(function () { return [StyleSheet.absoluteFill, { backgroundColor: theme.colors.background }, style]; }, [
+    var disableOffset = isTabScreen || isRootRoute;
+    var animatedStyles = useAnimatedStyles(initialRenderDone, stackPresentation, disableOffset, activityState);
+    var styles = useMemo(function () { return [StyleSheet.absoluteFill, { backgroundColor: theme.colors.background }, style, animatedStyles]; }, [
         style,
-        theme.colors.background
+        theme.colors.background,
+        animatedStyles
     ]);
     return (React.createElement(Screen, __assign({}, others, { activityState: activityState, active: activityState, stackPresentation: stackPresentation, style: styles }),
-        React.createElement(Route, { path: basePath }, initialRenderDone ? renderChildren : null)));
+        React.createElement(Route, { path: path }, initialRenderDone ? renderChildren : null)));
 }
 //# sourceMappingURL=NavigationRoute.js.map

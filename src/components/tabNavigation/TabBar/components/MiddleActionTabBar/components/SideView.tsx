@@ -16,8 +16,7 @@ export function SideView({ tabBarSafeAreaPadding, flexDirection, children }: Sid
             style={tabBarSafeAreaPadding}
             flexDirection={flexDirection}
             backgroundColor={'tabBarBackground'}
-            flexGrow={1}
-            flexBasis={0}
+            flex={1}
             shadowColor={'shadowColor'}
             shadowOffset={shadowProperties.offset}
             shadowOpacity={shadowProperties.opacity}

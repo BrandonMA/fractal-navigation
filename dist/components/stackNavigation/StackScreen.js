@@ -21,12 +21,12 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import React from 'react';
-import { useHistory } from '../../react-router';
 import { NavigationRoute } from '../NavigationRoute/NavigationRoute';
 import { NavigationBar } from './NavigationBar';
 import { Platform, StatusBar } from 'react-native';
 import { PlatformBar } from './PlatformBar';
 import { usePlatformBarStyles } from './PlatformBar/hooks/usePlatformBarStyles';
+import { useHistory } from '../../react-router';
 export function StackScreen(_a) {
     var children = _a.children, navBarConfig = _a.navBarConfig, stackPresentation = _a.stackPresentation, path = _a.path, others = __rest(_a, ["children", "navBarConfig", "stackPresentation", "path"]);
     var goBack = useHistory().goBack;
