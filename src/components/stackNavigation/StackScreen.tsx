@@ -8,7 +8,6 @@ import { useHistory } from '../../react-router';
 
 interface StackScreenProps extends NavigationRouteProps {
     navBarConfig?: JSX.Element;
-    rootScreen?: boolean;
 }
 
 export function StackScreen({ children, navBarConfig, stackPresentation, path, ...others }: StackScreenProps): JSX.Element {
