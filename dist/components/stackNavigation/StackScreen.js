@@ -34,7 +34,7 @@ export function StackScreen(_a) {
     var isNavigationBarForNativeModal = stackPresentation === 'modal' && navBarConfig != null && (Platform.OS === 'ios' || Platform.OS === 'android');
     return (React.createElement(NavigationRoute, __assign({}, others, { onDismissed: goBack, stackPresentation: stackPresentation, path: path }),
         stackPresentation === 'modal' ? React.createElement(StatusBar, { barStyle: 'light-content' }) : null,
-        isNavigationBarForNativeModal ? (React.createElement(NavigationBar, __assign({}, navBarConfig === null || navBarConfig === void 0 ? void 0 : navBarConfig.props, { path: path }))) : navBarConfig != null ? (React.createElement(PlatformBar, __assign({}, navBarConfig === null || navBarConfig === void 0 ? void 0 : navBarConfig.props, styleProps, { path: path }))) : null,
+        isNavigationBarForNativeModal ? (React.createElement(NavigationBar, __assign({}, navBarConfig === null || navBarConfig === void 0 ? void 0 : navBarConfig.props, { path: path, stackPresentation: stackPresentation }))) : navBarConfig != null ? (React.createElement(PlatformBar, __assign({}, navBarConfig === null || navBarConfig === void 0 ? void 0 : navBarConfig.props, styleProps, { path: path, stackPresentation: stackPresentation }))) : null,
         children));
 }
 //# sourceMappingURL=StackScreen.js.map

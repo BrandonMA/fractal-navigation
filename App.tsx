@@ -19,7 +19,7 @@ import {
     TabScreen
 } from './src';
 import { Entypo as BaseEntypo } from '@expo/vector-icons';
-import { BaseBox, Button, FractalThemeIdentifierContext, PaddedContainer, Text } from '@bma98/fractal-ui';
+import { BaseBox, Button, FractalThemeIdentifierContext, PaddedContainer, Text, TextField } from '@bma98/fractal-ui';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Entypo = memo(BaseEntypo);
@@ -39,6 +39,11 @@ const feedRoute = '/app/feed';
 function StackPush(): JSX.Element {
     const history = useHistory();
     return <Button variant='mainInteractiveColor' text='Stack push' onPress={() => history.push(homeProfileRoute)} />;
+}
+
+function Dummy(): JSX.Element {
+    console.log('render');
+    return <TextField placeholder={'Prueba'} />;
 }
 
 function ModalPush(): JSX.Element {
@@ -117,6 +122,7 @@ function NavigationCode(): JSX.Element {
                             <SafeAreaView>
                                 <PaddedContainer>
                                     <StackPush />
+                                    <Dummy />
                                 </PaddedContainer>
                             </SafeAreaView>
                         </StackScreenContent>
@@ -135,6 +141,7 @@ function NavigationCode(): JSX.Element {
                             <SafeAreaView>
                                 <PaddedContainer>
                                     <ModalPush />
+                                    <TextField placeholder={'Prueba'} />
                                 </PaddedContainer>
                             </SafeAreaView>
                         </StackScreenContent>

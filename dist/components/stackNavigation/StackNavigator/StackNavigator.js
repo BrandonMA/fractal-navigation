@@ -24,11 +24,11 @@ import React, { Children, useEffect, useMemo, useRef } from 'react';
 import { useLocation } from '../../../react-router';
 import { ScreenStack } from '../ScreenStack';
 import { filterMatchingChildren } from './util/filterMatchingChildren';
-import { injectModalContainers } from './util/injectModalContainer';
 import { useIsRouteActive } from '../../../hooks/useIsRouteActive';
 import { getMarginInsets } from '../../../util/getMarginInsets';
 import { useTabBarInsets } from '../../../hooks/useTabBarInsets';
 import { StackNavigatorRootPathProvider } from '../../../context/StackNavigatorRootPathProvider';
+import { Platform } from 'react-native';
 export function StackNavigator(_a) {
     var _b = _a.path, path = _b === void 0 ? '' : _b, children = _a.children, style = _a.style, others = __rest(_a, ["path", "children", "style"]);
     var pathname = useLocation().pathname;
@@ -37,10 +37,14 @@ export function StackNavigator(_a) {
     var tabBarInsets = useTabBarInsets();
     var marginInsets = getMarginInsets(tabBarInsets, false, true);
     var childrenToRender = useMemo(function () {
-        var arrayOfChildren = Children.toArray(children);
-        arrayOfChildren = filterMatchingChildren(arrayOfChildren, pathname);
-        arrayOfChildren = injectModalContainers(arrayOfChildren);
-        return arrayOfChildren;
+        if (Platform.OS === 'web') {
+            return children;
+        }
+        else {
+            var arrayOfChildren = Children.toArray(children);
+            arrayOfChildren = filterMatchingChildren(arrayOfChildren, pathname);
+            return arrayOfChildren;
+        }
     }, [children, pathname]);
     var finalStyle = useMemo(function () {
         return [

@@ -2,11 +2,11 @@ import React, { Children, useEffect, useMemo, useRef } from 'react';
 import { useLocation } from '../../../react-router';
 import { ScreenStack, ScreenStackProps } from '../ScreenStack';
 import { filterMatchingChildren } from './util/filterMatchingChildren';
-import { injectModalContainers } from './util/injectModalContainer';
 import { useIsRouteActive } from '../../../hooks/useIsRouteActive';
 import { getMarginInsets } from '../../../util/getMarginInsets';
 import { useTabBarInsets } from '../../../hooks/useTabBarInsets';
 import { StackNavigatorRootPathProvider } from '../../../context/StackNavigatorRootPathProvider';
+import { Platform } from 'react-native';
 
 export interface StackNavigatorProps extends Omit<ScreenStackProps, 'children'> {
     children: Array<JSX.Element> | JSX.Element;
@@ -16,15 +16,18 @@ export interface StackNavigatorProps extends Omit<ScreenStackProps, 'children'> 
 export function StackNavigator({ path = '', children, style, ...others }: StackNavigatorProps): JSX.Element {
     const { pathname } = useLocation();
     const isRouteActive = useIsRouteActive(path, false);
-    const prevChildrenRef = useRef<Array<JSX.Element>>([]);
+    const prevChildrenRef = useRef<Array<JSX.Element> | JSX.Element>([]);
     const tabBarInsets = useTabBarInsets();
     const marginInsets = getMarginInsets(tabBarInsets, false, true);
 
     const childrenToRender = useMemo(() => {
-        let arrayOfChildren = Children.toArray(children) as Array<JSX.Element>;
-        arrayOfChildren = filterMatchingChildren(arrayOfChildren, pathname);
-        arrayOfChildren = injectModalContainers(arrayOfChildren);
-        return arrayOfChildren;
+        if (Platform.OS === 'web') {
+            return children;
+        } else {
+            let arrayOfChildren = Children.toArray(children) as Array<JSX.Element>;
+            arrayOfChildren = filterMatchingChildren(arrayOfChildren, pathname);
+            return arrayOfChildren;
+        }
     }, [children, pathname]);
 
     const finalStyle = useMemo(() => {

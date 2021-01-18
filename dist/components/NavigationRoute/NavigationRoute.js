@@ -22,26 +22,38 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import React, { useCallback, useMemo } from 'react';
 import { Screen } from 'react-native-screens';
-import { Route } from '../../react-router';
-import { StyleSheet } from 'react-native';
+import { Route, useLocation } from '../../react-router';
+import { Platform, StyleSheet } from 'react-native';
 import { useScreenActivityState } from './hooks/useScreenActivityState';
 import { useTheme } from '@shopify/restyle';
+import { AnimatedPresence, RightSlideAnimation } from '@bma98/fractal-ui';
 import { useInitialRenderDone } from './hooks/useInitialRenderDone';
-import { useAnimatedStyles } from './hooks/useAnimatedStyles';
+import { StackScreenModal } from '../stackNavigation/StackScreenModal';
+import { useStackNavigatorRootPath } from '../../hooks/useStackNavigatorRootPath';
 export function NavigationRoute(_a) {
     var _b = _a.path, path = _b === void 0 ? '/' : _b, style = _a.style, children = _a.children, isTabScreen = _a.isTabScreen, _c = _a.stackPresentation, stackPresentation = _c === void 0 ? 'push' : _c, _d = _a.isRootRoute, isRootRoute = _d === void 0 ? false : _d, others = __rest(_a, ["path", "style", "children", "isTabScreen", "stackPresentation", "isRootRoute"]);
     var theme = useTheme();
     var renderChildren = useCallback(function () { return children; }, [children]);
     var activityState = useScreenActivityState(path, isTabScreen !== null && isTabScreen !== void 0 ? isTabScreen : false);
-    var initialRenderDone = useInitialRenderDone(activityState);
-    var disableOffset = isTabScreen || isRootRoute;
-    var animatedStyles = useAnimatedStyles(initialRenderDone, stackPresentation, disableOffset, activityState);
-    var styles = useMemo(function () { return [StyleSheet.absoluteFill, { backgroundColor: theme.colors.background }, style, animatedStyles]; }, [
+    var _e = useInitialRenderDone(activityState), initialRenderDone = _e[0], disableInitialRender = _e[1];
+    var pathname = useLocation().pathname;
+    var stackRootPath = useStackNavigatorRootPath();
+    var isRootPath = pathname === stackRootPath;
+    var contentStyle = useMemo(function () { return [StyleSheet.absoluteFill, { backgroundColor: theme.colors.background }, style]; }, [
         style,
-        theme.colors.background,
-        animatedStyles
+        theme.colors.background
     ]);
-    return (React.createElement(Screen, __assign({}, others, { activityState: activityState, active: activityState, stackPresentation: stackPresentation, style: styles }),
+    var content = (React.createElement(Screen, __assign({}, others, { activityState: activityState, active: activityState, stackPresentation: stackPresentation, style: contentStyle }),
         React.createElement(Route, { path: path }, initialRenderDone ? renderChildren : null)));
+    if (Platform.OS === 'web' && stackPresentation === 'push' && !isTabScreen && !isRootRoute) {
+        var isSubRouteVisible = activityState > 0 || initialRenderDone;
+        return (React.createElement(AnimatedPresence, null, isSubRouteVisible && !isRootPath ? (React.createElement(RightSlideAnimation, { onHide: disableInitialRender, backgroundColor: 'background', position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }, content)) : null));
+    }
+    else if (Platform.OS === 'web' && stackPresentation === 'modal') {
+        return activityState > 0 ? React.createElement(StackScreenModal, null, content) : null;
+    }
+    else {
+        return content;
+    }
 }
 //# sourceMappingURL=NavigationRoute.js.map

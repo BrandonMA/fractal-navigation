@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useHistory } from '../../react-router';
 import { MiddleCellModal } from '@bma98/fractal-ui';
 
 interface StackScreenModalProps {
-    children: JSX.Element;
+    children: JSX.Element | ReactNode;
 }
 
 export function StackScreenModal({ children }: StackScreenModalProps): JSX.Element {
     const { goBack } = useHistory();
 
     return (
-        <MiddleCellModal visible onDismiss={goBack}>
+        <MiddleCellModal disableStateResetOnDismiss visible onDismiss={goBack}>
             {children}
         </MiddleCellModal>
     );

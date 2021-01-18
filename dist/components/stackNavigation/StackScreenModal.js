@@ -4,6 +4,6 @@ import { MiddleCellModal } from '@bma98/fractal-ui';
 export function StackScreenModal(_a) {
     var children = _a.children;
     var goBack = useHistory().goBack;
-    return (React.createElement(MiddleCellModal, { visible: true, onDismiss: goBack }, children));
+    return (React.createElement(MiddleCellModal, { disableStateResetOnDismiss: true, visible: true, onDismiss: goBack }, children));
 }
 //# sourceMappingURL=StackScreenModal.js.map

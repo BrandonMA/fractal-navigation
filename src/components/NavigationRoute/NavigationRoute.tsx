@@ -1,16 +1,17 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { ReactNode, useCallback, useMemo } from 'react';
 import { Screen, ScreenProps, StackPresentationTypes } from 'react-native-screens';
-import { Route } from '../../react-router';
-import { StyleSheet } from 'react-native';
+import { Route, useLocation } from '../../react-router';
+import { Platform, StyleSheet } from 'react-native';
 import { useScreenActivityState } from './hooks/useScreenActivityState';
 import { useTheme } from '@shopify/restyle';
-import { FractalTheme } from '@bma98/fractal-ui';
+import { AnimatedPresence, FractalTheme, RightSlideAnimation } from '@bma98/fractal-ui';
 import { useInitialRenderDone } from './hooks/useInitialRenderDone';
-import { useAnimatedStyles } from './hooks/useAnimatedStyles';
+import { StackScreenModal } from '../stackNavigation/StackScreenModal';
+import { useStackNavigatorRootPath } from '../../hooks/useStackNavigatorRootPath';
 
 export interface NavigationRouteProps extends Omit<ScreenProps, 'stackPresentation' | 'active'> {
     path?: string;
-    children?: Array<JSX.Element> | JSX.Element | React.ReactNode;
+    children?: Array<JSX.Element> | JSX.Element | ReactNode;
     stackPresentation?: StackPresentationTypes;
     isTabScreen?: boolean;
     isRootRoute?: boolean;
@@ -24,30 +25,55 @@ export function NavigationRoute({
     stackPresentation = 'push',
     isRootRoute = false,
     ...others
-}: NavigationRouteProps): JSX.Element {
+}: NavigationRouteProps): JSX.Element | null {
     const theme = useTheme<FractalTheme>();
     const renderChildren = useCallback(() => children, [children]);
     const activityState = useScreenActivityState(path, isTabScreen ?? false);
-    const initialRenderDone = useInitialRenderDone(activityState);
+    const [initialRenderDone, disableInitialRender] = useInitialRenderDone(activityState);
 
-    const disableOffset = isTabScreen || isRootRoute;
-    const animatedStyles = useAnimatedStyles(initialRenderDone, stackPresentation, disableOffset, activityState);
+    const { pathname } = useLocation();
+    const stackRootPath = useStackNavigatorRootPath();
+    const isRootPath = pathname === stackRootPath;
 
-    const styles = useMemo(() => [StyleSheet.absoluteFill, { backgroundColor: theme.colors.background }, style, animatedStyles], [
+    const contentStyle = useMemo(() => [StyleSheet.absoluteFill, { backgroundColor: theme.colors.background }, style], [
         style,
-        theme.colors.background,
-        animatedStyles
+        theme.colors.background
     ]);
 
-    return (
+    const content = (
         <Screen
             {...others}
             activityState={activityState} // This prop only works on native.
             active={activityState as 0 | 1}
             stackPresentation={stackPresentation}
-            style={styles as any}
+            style={contentStyle as any}
         >
             <Route path={path}>{initialRenderDone ? renderChildren : null}</Route>
         </Screen>
     );
+
+    if (Platform.OS === 'web' && stackPresentation === 'push' && !isTabScreen && !isRootRoute) {
+        const isSubRouteVisible = activityState > 0 || initialRenderDone;
+        return (
+            <AnimatedPresence>
+                {isSubRouteVisible && !isRootPath ? (
+                    <RightSlideAnimation
+                        onHide={disableInitialRender}
+                        backgroundColor={'background'}
+                        position={'absolute'}
+                        top={0}
+                        right={0}
+                        bottom={0}
+                        left={0}
+                    >
+                        {content}
+                    </RightSlideAnimation>
+                ) : null}
+            </AnimatedPresence>
+        );
+    } else if (Platform.OS === 'web' && stackPresentation === 'modal') {
+        return activityState > 0 ? <StackScreenModal>{content}</StackScreenModal> : null;
+    } else {
+        return content;
+    }
 }

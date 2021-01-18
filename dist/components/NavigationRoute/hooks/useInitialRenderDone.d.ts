@@ -1,1 +1,1 @@
-export declare function useInitialRenderDone(activityState: 0 | 1 | 2): boolean;
+export declare function useInitialRenderDone(activityState: 0 | 1 | 2): [boolean, () => void];

@@ -1,3 +1,5 @@
+import { StackPresentationTypes } from "react-native-screens";
+
 export interface NavigationBarProps {
     children?: JSX.Element | Array<JSX.Element>;
     hidden?: boolean;
@@ -6,4 +8,5 @@ export interface NavigationBarProps {
     title?: string;
     path?: string;
     largeTitle?: boolean;
+    stackPresentation?: StackPresentationTypes;
 }

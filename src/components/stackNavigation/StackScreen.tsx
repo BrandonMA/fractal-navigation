@@ -21,9 +21,9 @@ export function StackScreen({ children, navBarConfig, stackPresentation, path, .
         <NavigationRoute {...others} onDismissed={goBack} stackPresentation={stackPresentation} path={path}>
             {stackPresentation === 'modal' ? <StatusBar barStyle='light-content' /> : null}
             {isNavigationBarForNativeModal ? (
-                <NavigationBar {...navBarConfig?.props} path={path} />
+                <NavigationBar {...navBarConfig?.props} path={path} stackPresentation={stackPresentation} />
             ) : navBarConfig != null ? (
-                <PlatformBar {...navBarConfig?.props} {...styleProps} path={path} />
+                <PlatformBar {...navBarConfig?.props} {...styleProps} path={path} stackPresentation={stackPresentation} />
             ) : null}
             {children}
         </NavigationRoute>
