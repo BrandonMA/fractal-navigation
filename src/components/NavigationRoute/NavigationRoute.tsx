@@ -1,13 +1,13 @@
 import React, { ReactNode, useCallback, useMemo } from 'react';
 import { Screen, ScreenProps, StackPresentationTypes } from 'react-native-screens';
-import { Route, useLocation } from '../../react-router';
+import { Route } from '../../react-router';
 import { Platform, StyleSheet } from 'react-native';
 import { useScreenActivityState } from './hooks/useScreenActivityState';
 import { useTheme } from '@shopify/restyle';
-import { AnimatedPresence, FractalTheme, RightSlideAnimation } from '@bma98/fractal-ui';
+import { FractalTheme } from '@bma98/fractal-ui';
 import { useInitialRenderDone } from './hooks/useInitialRenderDone';
-import { StackScreenModal } from '../stackNavigation/StackScreenModal';
-import { useStackNavigatorRootPath } from '../../hooks/useStackNavigatorRootPath';
+import { StackScreenWebModalContainer } from '../stackNavigation/StackScreenWebModalContainer';
+import { StackScreenWebContainer } from '../stackNavigation/StackScreenWebContainer/StackScreenWebContainer';
 
 export interface NavigationRouteProps extends Omit<ScreenProps, 'stackPresentation' | 'active'> {
     path?: string;
@@ -29,11 +29,7 @@ export function NavigationRoute({
     const theme = useTheme<FractalTheme>();
     const renderChildren = useCallback(() => children, [children]);
     const activityState = useScreenActivityState(path, isTabScreen ?? false);
-    const [initialRenderDone, disableInitialRender] = useInitialRenderDone(activityState);
-
-    const { pathname } = useLocation();
-    const stackRootPath = useStackNavigatorRootPath();
-    const isRootPath = pathname === stackRootPath;
+    const [initialRenderDone] = useInitialRenderDone(activityState);
 
     const contentStyle = useMemo(() => [StyleSheet.absoluteFill, { backgroundColor: theme.colors.background }, style], [
         style,
@@ -53,26 +49,9 @@ export function NavigationRoute({
     );
 
     if (Platform.OS === 'web' && stackPresentation === 'push' && !isTabScreen && !isRootRoute) {
-        const isSubRouteVisible = activityState > 0 || initialRenderDone;
-        return (
-            <AnimatedPresence>
-                {isSubRouteVisible && !isRootPath ? (
-                    <RightSlideAnimation
-                        onHide={disableInitialRender}
-                        backgroundColor={'background'}
-                        position={'absolute'}
-                        top={0}
-                        right={0}
-                        bottom={0}
-                        left={0}
-                    >
-                        {content}
-                    </RightSlideAnimation>
-                ) : null}
-            </AnimatedPresence>
-        );
+        return <StackScreenWebContainer>{content}</StackScreenWebContainer>;
     } else if (Platform.OS === 'web' && stackPresentation === 'modal') {
-        return activityState > 0 ? <StackScreenModal>{content}</StackScreenModal> : null;
+        return activityState > 0 ? <StackScreenWebModalContainer>{content}</StackScreenWebModalContainer> : null;
     } else {
         return content;
     }

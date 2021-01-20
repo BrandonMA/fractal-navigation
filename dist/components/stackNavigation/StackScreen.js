@@ -28,7 +28,7 @@ import { PlatformBar } from './PlatformBar';
 import { usePlatformBarStyles } from './PlatformBar/hooks/usePlatformBarStyles';
 import { useHistory } from '../../react-router';
 export function StackScreen(_a) {
-    var children = _a.children, navBarConfig = _a.navBarConfig, stackPresentation = _a.stackPresentation, path = _a.path, others = __rest(_a, ["children", "navBarConfig", "stackPresentation", "path"]);
+    var children = _a.children, navBarConfig = _a.navBarConfig, _b = _a.stackPresentation, stackPresentation = _b === void 0 ? 'push' : _b, path = _a.path, others = __rest(_a, ["children", "navBarConfig", "stackPresentation", "path"]);
     var goBack = useHistory().goBack;
     var styleProps = usePlatformBarStyles();
     var isNavigationBarForNativeModal = stackPresentation === 'modal' && navBarConfig != null && (Platform.OS === 'ios' || Platform.OS === 'android');

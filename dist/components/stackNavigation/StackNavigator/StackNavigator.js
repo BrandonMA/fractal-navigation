@@ -28,7 +28,6 @@ import { useIsRouteActive } from '../../../hooks/useIsRouteActive';
 import { getMarginInsets } from '../../../util/getMarginInsets';
 import { useTabBarInsets } from '../../../hooks/useTabBarInsets';
 import { StackNavigatorRootPathProvider } from '../../../context/StackNavigatorRootPathProvider';
-import { Platform } from 'react-native';
 export function StackNavigator(_a) {
     var _b = _a.path, path = _b === void 0 ? '' : _b, children = _a.children, style = _a.style, others = __rest(_a, ["path", "children", "style"]);
     var pathname = useLocation().pathname;
@@ -36,16 +35,8 @@ export function StackNavigator(_a) {
     var prevChildrenRef = useRef([]);
     var tabBarInsets = useTabBarInsets();
     var marginInsets = getMarginInsets(tabBarInsets, false, true);
-    var childrenToRender = useMemo(function () {
-        if (Platform.OS === 'web') {
-            return children;
-        }
-        else {
-            var arrayOfChildren = Children.toArray(children);
-            arrayOfChildren = filterMatchingChildren(arrayOfChildren, pathname);
-            return arrayOfChildren;
-        }
-    }, [children, pathname]);
+    var childrenToRender = Children.toArray(children);
+    childrenToRender = filterMatchingChildren(childrenToRender, pathname);
     var finalStyle = useMemo(function () {
         return [
             style,

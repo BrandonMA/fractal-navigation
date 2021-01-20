@@ -6,7 +6,6 @@ import { useIsRouteActive } from '../../../hooks/useIsRouteActive';
 import { getMarginInsets } from '../../../util/getMarginInsets';
 import { useTabBarInsets } from '../../../hooks/useTabBarInsets';
 import { StackNavigatorRootPathProvider } from '../../../context/StackNavigatorRootPathProvider';
-import { Platform } from 'react-native';
 
 export interface StackNavigatorProps extends Omit<ScreenStackProps, 'children'> {
     children: Array<JSX.Element> | JSX.Element;
@@ -20,15 +19,8 @@ export function StackNavigator({ path = '', children, style, ...others }: StackN
     const tabBarInsets = useTabBarInsets();
     const marginInsets = getMarginInsets(tabBarInsets, false, true);
 
-    const childrenToRender = useMemo(() => {
-        if (Platform.OS === 'web') {
-            return children;
-        } else {
-            let arrayOfChildren = Children.toArray(children) as Array<JSX.Element>;
-            arrayOfChildren = filterMatchingChildren(arrayOfChildren, pathname);
-            return arrayOfChildren;
-        }
-    }, [children, pathname]);
+    let childrenToRender = Children.toArray(children) as Array<JSX.Element>;
+    childrenToRender = filterMatchingChildren(childrenToRender, pathname);
 
     const finalStyle = useMemo(() => {
         return [

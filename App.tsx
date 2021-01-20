@@ -42,7 +42,6 @@ function StackPush(): JSX.Element {
 }
 
 function Dummy(): JSX.Element {
-    console.log('render');
     return <TextField placeholder={'Prueba'} />;
 }
 

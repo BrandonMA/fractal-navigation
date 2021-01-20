@@ -10,7 +10,7 @@ interface StackScreenProps extends NavigationRouteProps {
     navBarConfig?: JSX.Element;
 }
 
-export function StackScreen({ children, navBarConfig, stackPresentation, path, ...others }: StackScreenProps): JSX.Element {
+export function StackScreen({ children, navBarConfig, stackPresentation = 'push', path, ...others }: StackScreenProps): JSX.Element {
     const { goBack } = useHistory();
     const styleProps = usePlatformBarStyles();
     const isNavigationBarForNativeModal =

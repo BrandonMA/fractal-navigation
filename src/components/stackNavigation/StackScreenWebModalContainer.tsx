@@ -6,7 +6,7 @@ interface StackScreenModalProps {
     children: JSX.Element | ReactNode;
 }
 
-export function StackScreenModal({ children }: StackScreenModalProps): JSX.Element {
+export function StackScreenWebModalContainer({ children }: StackScreenModalProps): JSX.Element {
     const { goBack } = useHistory();
 
     return (

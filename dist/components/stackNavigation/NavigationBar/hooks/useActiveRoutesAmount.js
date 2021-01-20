@@ -1,6 +1,6 @@
 import { useLocation } from '../../../../react-router';
 import { useIsRouteActive } from '../../../../hooks/useIsRouteActive';
-export function useActiveRouteSections(path) {
+export function useActiveRoutesAmount(path) {
     var pathname = useLocation().pathname;
     var isRouteActive = useIsRouteActive(path, false);
     if (isRouteActive) {
@@ -10,4 +10,4 @@ export function useActiveRouteSections(path) {
         return 0;
     }
 }
-//# sourceMappingURL=useActiveRouteSections.js.map
+//# sourceMappingURL=useActiveRoutesAmount.js.map

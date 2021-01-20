@@ -1,7 +1,7 @@
 import { useLocation } from '../../../../react-router';
 import { useIsRouteActive } from '../../../../hooks/useIsRouteActive';
 
-export function useActiveRouteSections(path: string): number {
+export function useActiveRoutesAmount(path: string): number {
     const { pathname } = useLocation();
     const isRouteActive = useIsRouteActive(path, false);
 
