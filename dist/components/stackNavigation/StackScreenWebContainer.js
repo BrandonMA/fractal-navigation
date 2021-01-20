@@ -1,7 +1,7 @@
 import { AnimatedPresence, RightSlideAnimation, useAnimatedPresenceState } from '@bma98/fractal-ui';
 import React from 'react';
-import { useHistory } from '../../../react-router';
-import { HideStackScreenWebContainerProvider } from './context/HideStackScreenWebContainerProvider';
+import { useHistory } from '../../react-router';
+import { HideStackScreenWebContainerProvider } from '../../context/HideStackScreenWebContainerProvider';
 export function StackScreenWebContainer(_a) {
     var children = _a.children;
     var goBack = useHistory().goBack;

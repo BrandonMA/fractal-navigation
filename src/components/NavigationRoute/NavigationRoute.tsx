@@ -7,7 +7,8 @@ import { useTheme } from '@shopify/restyle';
 import { FractalTheme } from '@bma98/fractal-ui';
 import { useInitialRenderDone } from './hooks/useInitialRenderDone';
 import { StackScreenWebModalContainer } from '../stackNavigation/StackScreenWebModalContainer';
-import { StackScreenWebContainer } from '../stackNavigation/StackScreenWebContainer/StackScreenWebContainer';
+import { StackScreenWebContainer } from '../stackNavigation/StackScreenWebContainer';
+import { StackPresentationTypeProvider } from '../../context';
 
 export interface NavigationRouteProps extends Omit<ScreenProps, 'stackPresentation' | 'active'> {
     path?: string;
@@ -44,7 +45,9 @@ export function NavigationRoute({
             stackPresentation={stackPresentation}
             style={contentStyle as any}
         >
-            <Route path={path}>{initialRenderDone ? renderChildren : null}</Route>
+            <StackPresentationTypeProvider stackPresentation={stackPresentation}>
+                <Route path={path}>{initialRenderDone ? renderChildren : null}</Route>
+            </StackPresentationTypeProvider>
         </Screen>
     );
 

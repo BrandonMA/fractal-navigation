@@ -1,12 +1,14 @@
 import { useHistory } from '../react-router';
-import { useCallback, useContext } from 'react';
-import { HideStackScreenWebContainerContext } from '../components/stackNavigation/StackScreenWebContainer/context/HideStackScreenWebContainerProvider';
+import { useCallback } from 'react';
 import { useHideModalAnimated } from '@bma98/fractal-ui/dist/components/modals/hooks/useHideModalAnimated';
 import { Platform } from 'react-native';
-export function useGoBackAnimated(stackPresentation) {
+import { useStackPresentationType } from './useStackPresentationType';
+import { useHideScreenAnimated } from './useHideScreenAnimated';
+export function useGoBackAnimated() {
     var goBack = useHistory().goBack;
-    var hideScreenAnimated = useContext(HideStackScreenWebContainerContext);
+    var hideScreenAnimated = useHideScreenAnimated();
     var hideModalAnimated = useHideModalAnimated();
+    var stackPresentation = useStackPresentationType();
     return useCallback(function () {
         if (stackPresentation === 'modal' && Platform.OS === 'web') {
             hideModalAnimated();

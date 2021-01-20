@@ -11,13 +11,13 @@ import { useGoBackAnimated } from '../../../hooks/useGoBackAnimated';
 // Render might be called multiple times because of useLocation and useRouteMatch.
 // But as long as we keep diving components and using memo, the performance hit is actually nothing to worry about.
 export function NavigationBar(_a) {
-    var hidden = _a.hidden, title = _a.title, hideBackButton = _a.hideBackButton, _b = _a.stackPresentation, stackPresentation = _b === void 0 ? 'push' : _b, backTitle = _a.backTitle, _c = _a.path, path = _c === void 0 ? '' : _c, children = _a.children;
+    var hidden = _a.hidden, title = _a.title, hideBackButton = _a.hideBackButton, backTitle = _a.backTitle, _b = _a.path, path = _b === void 0 ? '' : _b, children = _a.children;
     var isRouteActiveAndExact = useIsRouteActive(path, true);
     var activeRoutesAmount = useActiveRoutesAmount(path);
-    var _d = useNavigationBarChildren(children), leftChild = _d[0], centerChild = _d[1], rightChild = _d[2];
+    var _c = useNavigationBarChildren(children), leftChild = _c[0], centerChild = _c[1], rightChild = _c[2];
     var stackNavigatorRootPath = useStackNavigatorRootPath();
     var isRootNavigationBar = stackNavigatorRootPath === path;
-    var goBack = useGoBackAnimated(stackPresentation);
+    var goBack = useGoBackAnimated();
     return hidden ? null : (React.createElement(NavigationBarBackground, null,
         React.createElement(NavigationBarLeft, { showBackButton: activeRoutesAmount > 1 && isRouteActiveAndExact && !hideBackButton && !isRootNavigationBar, goBack: goBack, backTitle: backTitle }, leftChild),
         React.createElement(NavigationBarCenter, { title: title }, centerChild),

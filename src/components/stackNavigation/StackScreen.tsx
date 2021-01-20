@@ -20,9 +20,9 @@ export function StackScreen({ children, navBarConfig, stackPresentation = 'push'
         <NavigationRoute {...others} onDismissed={goBack} stackPresentation={stackPresentation} path={path}>
             {stackPresentation === 'modal' ? <StatusBar barStyle='light-content' /> : null}
             {isNavigationBarForNativeModal ? (
-                <NavigationBar {...navBarConfig?.props} path={path} stackPresentation={stackPresentation} />
+                <NavigationBar {...navBarConfig?.props} path={path} />
             ) : navBarConfig != null ? (
-                <PlatformBar {...navBarConfig?.props} {...styleProps} path={path} stackPresentation={stackPresentation} />
+                <PlatformBar {...navBarConfig?.props} {...styleProps} path={path} />
             ) : null}
             {children}
         </NavigationRoute>

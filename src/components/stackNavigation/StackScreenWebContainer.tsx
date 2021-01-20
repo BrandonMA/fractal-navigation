@@ -1,7 +1,7 @@
 import { AnimatedPresence, RightSlideAnimation, useAnimatedPresenceState } from '@bma98/fractal-ui';
 import React, { ReactNode } from 'react';
-import { useHistory } from '../../../react-router';
-import { HideStackScreenWebContainerProvider } from './context/HideStackScreenWebContainerProvider';
+import { useHistory } from '../../react-router';
+import { HideStackScreenWebContainerProvider } from '../../context/HideStackScreenWebContainerProvider';
 
 export interface StackScreenWebContainerProps {
     children: ReactNode | JSX.Element;

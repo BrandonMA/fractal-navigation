@@ -28,7 +28,8 @@ import { useScreenActivityState } from './hooks/useScreenActivityState';
 import { useTheme } from '@shopify/restyle';
 import { useInitialRenderDone } from './hooks/useInitialRenderDone';
 import { StackScreenWebModalContainer } from '../stackNavigation/StackScreenWebModalContainer';
-import { StackScreenWebContainer } from '../stackNavigation/StackScreenWebContainer/StackScreenWebContainer';
+import { StackScreenWebContainer } from '../stackNavigation/StackScreenWebContainer';
+import { StackPresentationTypeProvider } from '../../context';
 export function NavigationRoute(_a) {
     var _b = _a.path, path = _b === void 0 ? '/' : _b, style = _a.style, children = _a.children, isTabScreen = _a.isTabScreen, _c = _a.stackPresentation, stackPresentation = _c === void 0 ? 'push' : _c, _d = _a.isRootRoute, isRootRoute = _d === void 0 ? false : _d, others = __rest(_a, ["path", "style", "children", "isTabScreen", "stackPresentation", "isRootRoute"]);
     var theme = useTheme();
@@ -40,7 +41,8 @@ export function NavigationRoute(_a) {
         theme.colors.background
     ]);
     var content = (React.createElement(Screen, __assign({}, others, { activityState: activityState, active: activityState, stackPresentation: stackPresentation, style: contentStyle }),
-        React.createElement(Route, { path: path }, initialRenderDone ? renderChildren : null)));
+        React.createElement(StackPresentationTypeProvider, { stackPresentation: stackPresentation },
+            React.createElement(Route, { path: path }, initialRenderDone ? renderChildren : null))));
     if (Platform.OS === 'web' && stackPresentation === 'push' && !isTabScreen && !isRootRoute) {
         return React.createElement(StackScreenWebContainer, null, content);
     }

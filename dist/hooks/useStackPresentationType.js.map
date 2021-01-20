@@ -1,0 +1,1 @@
+{"version":3,"file":"useStackPresentationType.js","sourceRoot":"","sources":["../../src/hooks/useStackPresentationType.tsx"],"names":[],"mappings":"AACA,OAAO,EAAE,UAAU,EAAE,MAAM,OAAO,CAAC;AACnC,OAAO,EAAE,4BAA4B,EAAE,MAAM,YAAY,CAAC;AAE1D,MAAM,UAAU,wBAAwB;IACpC,OAAO,UAAU,CAAC,4BAA4B,CAAC,CAAC;AACpD,CAAC"}

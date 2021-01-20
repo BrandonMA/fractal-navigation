@@ -1,0 +1,1 @@
+{"version":3,"file":"useHideScreenAnimated.js","sourceRoot":"","sources":["../../src/hooks/useHideScreenAnimated.tsx"],"names":[],"mappings":"AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,OAAO,CAAC;AACnC,OAAO,EAAE,kCAAkC,EAAE,MAAM,gDAAgD,CAAC;AAEpG,MAAM,UAAU,qBAAqB;IACjC,OAAO,UAAU,CAAC,kCAAkC,CAAC,CAAC;AAC1D,CAAC"}

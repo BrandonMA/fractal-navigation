@@ -12,21 +12,13 @@ import { useGoBackAnimated } from '../../../hooks/useGoBackAnimated';
 
 // Render might be called multiple times because of useLocation and useRouteMatch.
 // But as long as we keep diving components and using memo, the performance hit is actually nothing to worry about.
-export function NavigationBar({
-    hidden,
-    title,
-    hideBackButton,
-    stackPresentation = 'push',
-    backTitle,
-    path = '',
-    children
-}: NavigationBarProps): JSX.Element | null {
+export function NavigationBar({ hidden, title, hideBackButton, backTitle, path = '', children }: NavigationBarProps): JSX.Element | null {
     const isRouteActiveAndExact = useIsRouteActive(path, true);
     const activeRoutesAmount = useActiveRoutesAmount(path);
     const [leftChild, centerChild, rightChild] = useNavigationBarChildren(children);
     const stackNavigatorRootPath = useStackNavigatorRootPath();
     const isRootNavigationBar = stackNavigatorRootPath === path;
-    const goBack = useGoBackAnimated(stackPresentation);
+    const goBack = useGoBackAnimated();
 
     return hidden ? null : (
         <NavigationBarBackground>
