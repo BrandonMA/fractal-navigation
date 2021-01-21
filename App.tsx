@@ -64,7 +64,7 @@ function MainTabBar(): JSX.Element {
     }, []);
 
     return (
-        <TabBar tabBarVariant={'middle-action'} tabBarPosition={'bottom'}>
+        <TabBar tabBarVariant={'middle-action'} tabBarPosition={'left'}>
             <TabBarItem path={homeRoute} title={'Home'}>
                 {renderHome}
             </TabBarItem>
@@ -112,7 +112,7 @@ function NavigationCode(): JSX.Element {
                         navBarConfig={
                             <PlatformBarConfig title='Home' largeTitle>
                                 <PlatformBarRightView>
-                                    <NavigationBarButton>{renderSearchIcon}</NavigationBarButton>
+                                    <NavigationBarButton leftIcon={renderSearchIcon} />
                                 </PlatformBarRightView>
                             </PlatformBarConfig>
                         }
@@ -151,7 +151,7 @@ function NavigationCode(): JSX.Element {
                         navBarConfig={
                             <PlatformBarConfig title='Modal' backTitle='Back'>
                                 <PlatformBarRightView>
-                                    <NavigationBarButton text='Right' />
+                                    <NavigationBarButton>Right</NavigationBarButton>
                                 </PlatformBarRightView>
                             </PlatformBarConfig>
                         }

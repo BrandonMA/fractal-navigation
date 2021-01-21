@@ -36,7 +36,7 @@ export function NavigationRoute(_a) {
     var renderChildren = useCallback(function () { return children; }, [children]);
     var activityState = useScreenActivityState(path, isTabScreen !== null && isTabScreen !== void 0 ? isTabScreen : false);
     var initialRenderDone = useInitialRenderDone(activityState)[0];
-    var contentStyle = useMemo(function () { return [StyleSheet.absoluteFill, { backgroundColor: theme.colors.background }, style]; }, [
+    var contentStyle = useMemo(function () { return [StyleSheet.absoluteFill, { backgroundColor: theme.colors.background, width: '100%' }, style]; }, [
         style,
         theme.colors.background
     ]);

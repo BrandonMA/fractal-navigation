@@ -32,7 +32,7 @@ export function NavigationRoute({
     const activityState = useScreenActivityState(path, isTabScreen ?? false);
     const [initialRenderDone] = useInitialRenderDone(activityState);
 
-    const contentStyle = useMemo(() => [StyleSheet.absoluteFill, { backgroundColor: theme.colors.background }, style], [
+    const contentStyle = useMemo(() => [StyleSheet.absoluteFill, { backgroundColor: theme.colors.background, width: '100%' }, style], [
         style,
         theme.colors.background
     ]);

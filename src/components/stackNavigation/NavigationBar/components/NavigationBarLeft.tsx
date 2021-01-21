@@ -22,8 +22,8 @@ export const NavigationBarLeft = memo(
         return (
             <BaseBox justifyContent='flex-start' flex={1} flexDirection='row' alignItems='center' flexBasis={0}>
                 {showBackButton ? (
-                    <NavigationBarButton text={backTitle} onPress={goBack}>
-                        {renderChevronLeft}
+                    <NavigationBarButton leftIcon={renderChevronLeft} onPress={goBack}>
+                        {backTitle}
                     </NavigationBarButton>
                 ) : null}
                 {children}
