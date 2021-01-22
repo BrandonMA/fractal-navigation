@@ -1,9 +1,7 @@
 import React, { memo, ReactNode, useCallback } from 'react';
 import { BaseBox } from '@bma98/fractal-ui';
-import { Entypo as BaseEntypo } from '@expo/vector-icons';
 import { NavigationBarButton } from '../../NavigationBarButton';
-
-const Entypo = memo(BaseEntypo);
+import { ChevronLeft } from '../../../assets/ChevronLeft';
 
 interface NavigationBarLeftProps {
     children?: ReactNode;
@@ -15,7 +13,11 @@ interface NavigationBarLeftProps {
 export const NavigationBarLeft = memo(
     ({ children, showBackButton, backTitle, goBack }: NavigationBarLeftProps): JSX.Element => {
         const renderChevronLeft = useCallback(
-            (color) => <Entypo name='chevron-left' size={22} style={{ marginLeft: -6 }} color={color} />,
+            (color) => (
+                <BaseBox style={{ marginRight: 2 }}>
+                    <ChevronLeft height={20} width={20} fill={color} />
+                </BaseBox>
+            ),
             []
         );
 

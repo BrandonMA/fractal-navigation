@@ -1,6 +1,6 @@
 {
     "name": "@bma98/fractal-navigation",
-    "version": "1.0.18",
+    "version": "1.0.19",
     "description": "Navigation library for react native",
     "author": "BrandonMA",
     "license": "MIT",
@@ -22,17 +22,17 @@
         "react-is": "^16.13.1",
         "react-native-safe-area-context": "^3.1.9",
         "react-native-screens": "~2.15.0",
-        "@bma98/fractal-ui": "^1.7.11"
+        "@bma98/fractal-ui": "^1.7.12"
     },
     "dependencies": {
         "@bma98/size-class": "^2.0.4",
-        "@expo/vector-icons": "^12.0.0",
         "@shopify/restyle": "^1.4.0",
         "react-router-dom": "^5.2.0",
         "react-router-native": "^5.2.0"
     },
     "devDependencies": {
-        "@bma98/fractal-ui": "^1.7.11",
+        "@bma98/fractal-ui": "^1.7.12",
+        "@expo/vector-icons": "^12.0.0",
         "@babel/core": "~7.9.0",
         "@types/react": "~16.9.35",
         "@types/react-native": "~0.63.2",

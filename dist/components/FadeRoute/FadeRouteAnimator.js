@@ -6,7 +6,7 @@ var MemoizedContainer = memo(function (_a) {
     return React.createElement(Animated.View, { style: style }, children);
 });
 export function FadeRouteAnimator(_a) {
-    var match = _a.match, children = _a.children;
+    var match = _a.match, children = _a.children, style = _a.style;
     var isRouteActive = match != null;
     var opacityValue = useRef(new Animated.Value(isRouteActive ? 1 : 0)).current;
     var _b = useState(isRouteActive), visible = _b[0], setVisible = _b[1];
@@ -14,8 +14,12 @@ export function FadeRouteAnimator(_a) {
     var hide = useHideAnimation(opacityValue, setVisibleToFalse);
     var show = useShowAnimation(opacityValue);
     var finalStyle = useMemo(function () {
-        return [StyleSheet.absoluteFill, { opacity: opacityValue, zIndex: isRouteActive ? 1000 : 0 }];
-    }, [opacityValue, isRouteActive]);
+        return [
+            StyleSheet.absoluteFill,
+            style,
+            { opacity: opacityValue, overflow: 'hidden', zIndex: isRouteActive ? 1000 : 0 }
+        ];
+    }, [opacityValue, isRouteActive, style]);
     useEffect(function () {
         if (isRouteActive) {
             setVisible(true);
