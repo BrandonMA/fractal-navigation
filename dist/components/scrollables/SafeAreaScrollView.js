@@ -13,7 +13,7 @@ import React from 'react';
 import { Animated } from 'react-native';
 import { useSafeAreaScrollViewProps } from './hooks/useSafeAreaScrollViewProps';
 export function SafeAreaScrollView(props) {
-    var scrollViewProps = useSafeAreaScrollViewProps();
-    return React.createElement(Animated.ScrollView, __assign({ keyboardShouldPersistTaps: 'always' }, props, scrollViewProps));
+    var scrollViewProps = useSafeAreaScrollViewProps(props);
+    return React.createElement(Animated.ScrollView, __assign({}, scrollViewProps));
 }
 //# sourceMappingURL=SafeAreaScrollView.js.map

@@ -13,7 +13,7 @@ import React from 'react';
 import { Animated } from 'react-native';
 import { useSafeAreaScrollViewProps } from './hooks/useSafeAreaScrollViewProps';
 export function SafeAreaFlatList(props) {
-    var scrollViewProps = useSafeAreaScrollViewProps();
+    var scrollViewProps = useSafeAreaScrollViewProps(props);
     return React.createElement(Animated.FlatList, __assign({}, props, scrollViewProps));
 }
 //# sourceMappingURL=SafeAreaFlatList.js.map

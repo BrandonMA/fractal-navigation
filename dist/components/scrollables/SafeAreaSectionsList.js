@@ -13,7 +13,7 @@ import React from 'react';
 import { Animated } from 'react-native';
 import { useSafeAreaScrollViewProps } from './hooks/useSafeAreaScrollViewProps';
 export function SafeAreaSectionsList(props) {
-    var scrollViewProps = useSafeAreaScrollViewProps();
+    var scrollViewProps = useSafeAreaScrollViewProps(props);
     return React.createElement(Animated.SectionList, __assign({}, props, scrollViewProps));
 }
 //# sourceMappingURL=SafeAreaSectionsList.js.map
