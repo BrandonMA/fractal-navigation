@@ -22,10 +22,9 @@ import { SideView } from './components/SideView';
 export function MiddleActionTabBar(_a) {
     var children = _a.children, style = _a.style, tabBarPosition = _a.tabBarPosition;
     var safeAreaInsets = useSafeAreaInsets();
-    var positionValues = useTabBarPositionValues(tabBarPosition);
-    var flexDirection = positionValues.flexDirection, width = positionValues.width, height = positionValues.height, bottom = positionValues.bottom, left = positionValues.left, right = positionValues.right;
+    var _b = useTabBarPositionValues(tabBarPosition), flexDirection = _b.flexDirection, width = _b.width, height = _b.height, bottom = _b.bottom, left = _b.left, right = _b.right;
     var tabBarSafeAreaPadding = useTabBarSafeAreaPadding(safeAreaInsets, tabBarPosition);
-    var _b = useMiddleActionTabBarChildren(children), leftChildren = _b[0], middleChild = _b[1], rightChildren = _b[2];
+    var _c = useMiddleActionTabBarChildren(children), leftChildren = _c[0], middleChild = _c[1], rightChildren = _c[2];
     var constantOffset = getBottomOffsetForCircularTabBarButton(tabBarPosition);
     var floatingOffset = getValueForTabBarPosition(tabBarPosition, { bottom: constantOffset }, { left: constantOffset }, { right: constantOffset });
     var constantDimension = 'auto';
