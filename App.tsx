@@ -16,11 +16,13 @@ import {
     TabBar,
     TabBarItem,
     TabNavigator,
-    TabScreen
+    TabScreen,
+    SafeAreaScrollView
 } from './src';
 import { Entypo as BaseEntypo } from '@expo/vector-icons';
 import { BaseBox, Button, FractalThemeIdentifierContext, PaddedContainer, Text, TextField } from '@bma98/fractal-ui';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { KeyboardAvoidingView } from 'react-native';
 
 const Entypo = memo(BaseEntypo);
 
@@ -64,7 +66,7 @@ function MainTabBar(): JSX.Element {
     }, []);
 
     return (
-        <TabBar tabBarVariant={'middle-action'} tabBarPosition={'left'}>
+        <TabBar tabBarVariant={'middle-action'} tabBarPosition={'bottom'}>
             <TabBarItem path={homeRoute} title={'Home'}>
                 {renderHome}
             </TabBarItem>
@@ -118,12 +120,16 @@ function NavigationCode(): JSX.Element {
                         }
                     >
                         <StackScreenContent>
-                            <SafeAreaView>
-                                <PaddedContainer>
-                                    <StackPush />
-                                    <Dummy />
-                                </PaddedContainer>
-                            </SafeAreaView>
+                            <KeyboardAvoidingView style={{ flex: 1 }} behavior='padding'>
+                                <SafeAreaScrollView>
+                                    <PaddedContainer>
+                                        <BaseBox height={600} backgroundColor='facebook' marginBottom='m' />
+                                        <StackPush />
+                                        <Dummy />
+                                        <BaseBox height={600} backgroundColor='facebook' marginBottom='m' />
+                                    </PaddedContainer>
+                                </SafeAreaScrollView>
+                            </KeyboardAvoidingView>
                         </StackScreenContent>
                     </StackScreen>
                     <StackScreen

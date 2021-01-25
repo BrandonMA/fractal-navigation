@@ -7,6 +7,6 @@ export interface SafeAreaScrollViewProps extends Omit<Animated.AnimatedProps<Scr
 }
 
 export function SafeAreaScrollView(props: SafeAreaScrollViewProps): JSX.Element {
-    const scrollViewProps = useSafeAreaScrollViewProps();
-    return <Animated.ScrollView keyboardShouldPersistTaps='always' {...props} {...scrollViewProps} />;
+    const scrollViewProps = useSafeAreaScrollViewProps(props);
+    return <Animated.ScrollView {...scrollViewProps} />;
 }
