@@ -12,8 +12,7 @@ import { SideView } from './components/SideView';
 
 export function MiddleActionTabBar({ children, style, tabBarPosition }: TabBarProps): JSX.Element {
     const safeAreaInsets = useSafeAreaInsets();
-    const positionValues = useTabBarPositionValues(tabBarPosition);
-    const { flexDirection, width, height, bottom, left, right } = positionValues;
+    const { flexDirection, width, height, bottom, left, right } = useTabBarPositionValues(tabBarPosition);
     const tabBarSafeAreaPadding = useTabBarSafeAreaPadding(safeAreaInsets, tabBarPosition);
 
     const [leftChildren, middleChild, rightChildren] = useMiddleActionTabBarChildren(children);
