@@ -1,8 +1,8 @@
 import React from 'react';
-import { Animated, FlatListProps } from 'react-native';
 import { useSafeAreaScrollViewProps } from './hooks/useSafeAreaScrollViewProps';
+import { KeyboardAwareFlatList, KeyboardAwareFlatListProps } from 'react-native-keyboard-aware-scroll-view';
 
-export function SafeAreaFlatList<T>(props: Animated.AnimatedProps<FlatListProps<T>>): JSX.Element {
+export function SafeAreaFlatList<T>(props: KeyboardAwareFlatListProps<T>): JSX.Element {
     const scrollViewProps = useSafeAreaScrollViewProps(props);
-    return <Animated.FlatList {...props} {...scrollViewProps} />;
+    return <KeyboardAwareFlatList enableOnAndroid {...props} {...scrollViewProps} />;
 }

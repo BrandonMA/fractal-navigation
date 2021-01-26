@@ -1,15 +1,14 @@
-import { Animated, Platform, ScrollViewProps } from 'react-native';
+import { Platform } from 'react-native';
 import { useMemo } from 'react';
 import { useNavigationInsets } from '../../../hooks/useNavigationInsets';
-
-type SafeAreaScrollViewProps = Animated.AnimatedProps<ScrollViewProps>;
+import { KeyboardAwareScrollViewProps } from 'react-native-keyboard-aware-scroll-view';
 
 export function useSafeAreaScrollViewProps({
     contentInset,
     scrollIndicatorInsets,
     contentContainerStyle,
     ...others
-}: SafeAreaScrollViewProps): SafeAreaScrollViewProps {
+}: KeyboardAwareScrollViewProps): KeyboardAwareScrollViewProps {
     const { totalInsets, tabBarInsets } = useNavigationInsets();
     const containerStyle = contentContainerStyle as any;
 

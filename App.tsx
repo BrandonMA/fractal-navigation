@@ -22,7 +22,6 @@ import {
 import { Entypo as BaseEntypo } from '@expo/vector-icons';
 import { BaseBox, Button, FractalThemeIdentifierContext, PaddedContainer, Text, TextField } from '@bma98/fractal-ui';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { KeyboardAvoidingView } from 'react-native';
 
 const Entypo = memo(BaseEntypo);
 
@@ -120,16 +119,14 @@ function NavigationCode(): JSX.Element {
                         }
                     >
                         <StackScreenContent>
-                            <KeyboardAvoidingView style={{ flex: 1 }} behavior='padding'>
-                                <SafeAreaScrollView>
-                                    <PaddedContainer>
-                                        <BaseBox height={600} backgroundColor='black' marginBottom='m' />
-                                        <StackPush />
-                                        <Dummy />
-                                        <BaseBox height={600} backgroundColor='black' marginBottom='m' />
-                                    </PaddedContainer>
-                                </SafeAreaScrollView>
-                            </KeyboardAvoidingView>
+                            <SafeAreaScrollView>
+                                <PaddedContainer>
+                                    <BaseBox height={600} backgroundColor='black' marginBottom='m' />
+                                    <StackPush />
+                                    <Dummy />
+                                    <BaseBox height={600} backgroundColor='black' marginBottom='m' />
+                                </PaddedContainer>
+                            </SafeAreaScrollView>
                         </StackScreenContent>
                     </StackScreen>
                     <StackScreen
@@ -184,7 +181,7 @@ function NavigationCode(): JSX.Element {
     );
 }
 
-function App(): JSX.Element {
+export function App(): JSX.Element {
     const [authenticated, setAuthenticated] = useState(false);
     const authenticate = useCallback(() => setAuthenticated(true), [setAuthenticated]);
 
