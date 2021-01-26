@@ -1,31 +1,29 @@
 {
-  "expo": {
-    "entryPoint": "./App.tsx",
-    "name": "Fractal-Navigation",
-    "slug": "Fractal-Navigation",
-    "version": "1.0.0",
-    "orientation": "default",
-    "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "fractal.fractalnavigation"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "android": {
-      "softwareKeyboardLayoutMode": "pan",
-      "package": "fractal.fractalnavigation"
+    "expo": {
+        "entryPoint": "./App.tsx",
+        "name": "Fractal-Navigation",
+        "slug": "Fractal-Navigation",
+        "version": "1.0.0",
+        "orientation": "default",
+        "icon": "./assets/icon.png",
+        "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "contain"
+        },
+        "updates": {
+            "fallbackToCacheTimeout": 0
+        },
+        "assetBundlePatterns": ["**/*"],
+        "ios": {
+            "supportsTablet": true,
+            "bundleIdentifier": "fractal.fractalnavigation"
+        },
+        "web": {
+            "favicon": "./assets/favicon.png"
+        },
+        "android": {
+            "softwareKeyboardLayoutMode": "pan",
+            "package": "fractal.fractalnavigation"
+        }
     }
-  }
 }
