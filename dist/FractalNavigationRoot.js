@@ -22,7 +22,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import React from 'react';
 import { enableScreens } from 'react-native-screens';
-import { FractalAppRoot } from '@bma98/fractal-ui';
+import { FractalAppRoot, Background } from '@bma98/fractal-ui';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationRouter } from './react-router';
 import { TabBarPositionProvider } from './context/TabBarPositionProvider';
@@ -35,6 +35,7 @@ export function FractalNavigationRoot(props) {
             React.createElement(SafeAreaProvider, null,
                 React.createElement(TabBarPositionProvider, null,
                     React.createElement(TabBarHiddenProvider, null,
-                        React.createElement(TabBarInsetsProvider, null, children)))))));
+                        React.createElement(TabBarInsetsProvider, null,
+                            React.createElement(Background, null, children))))))));
 }
 //# sourceMappingURL=FractalNavigationRoot.js.map

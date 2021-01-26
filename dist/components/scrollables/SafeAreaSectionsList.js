@@ -10,10 +10,10 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import React from 'react';
-import { Animated } from 'react-native';
 import { useSafeAreaScrollViewProps } from './hooks/useSafeAreaScrollViewProps';
+import { KeyboardAwareSectionList } from 'react-native-keyboard-aware-scroll-view';
 export function SafeAreaSectionsList(props) {
     var scrollViewProps = useSafeAreaScrollViewProps(props);
-    return React.createElement(Animated.SectionList, __assign({}, props, scrollViewProps));
+    return React.createElement(KeyboardAwareSectionList, __assign({ enableOnAndroid: true }, props, scrollViewProps));
 }
 //# sourceMappingURL=SafeAreaSectionsList.js.map

@@ -1,3 +1,3 @@
 /// <reference types="react" />
-import { Animated, FlatListProps } from 'react-native';
-export declare function SafeAreaFlatList<T>(props: Animated.AnimatedProps<FlatListProps<T>>): JSX.Element;
+import { KeyboardAwareFlatListProps } from 'react-native-keyboard-aware-scroll-view';
+export declare function SafeAreaFlatList<T>(props: KeyboardAwareFlatListProps<T>): JSX.Element;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { enableScreens } from 'react-native-screens';
-import { FractalAppRootProps, FractalAppRoot } from '@bma98/fractal-ui';
+import { FractalAppRootProps, FractalAppRoot, Background } from '@bma98/fractal-ui';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationRouter } from './react-router';
 import { TabBarPositionProvider } from './context/TabBarPositionProvider';
@@ -17,7 +17,9 @@ export function FractalNavigationRoot(props: FractalAppRootProps): JSX.Element {
                 <SafeAreaProvider>
                     <TabBarPositionProvider>
                         <TabBarHiddenProvider>
-                            <TabBarInsetsProvider>{children}</TabBarInsetsProvider>
+                            <TabBarInsetsProvider>
+                                <Background>{children}</Background>
+                            </TabBarInsetsProvider>
                         </TabBarHiddenProvider>
                     </TabBarPositionProvider>
                 </SafeAreaProvider>

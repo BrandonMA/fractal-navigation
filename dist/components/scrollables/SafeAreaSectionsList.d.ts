@@ -1,3 +1,3 @@
 /// <reference types="react" />
-import { Animated, SectionListProps } from 'react-native';
-export declare function SafeAreaSectionsList<T>(props: Animated.AnimatedProps<SectionListProps<T>>): JSX.Element;
+import { KeyboardAwareSectionListProps } from 'react-native-keyboard-aware-scroll-view';
+export declare function SafeAreaSectionsList<T>(props: KeyboardAwareSectionListProps<T>): JSX.Element;
