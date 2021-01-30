@@ -152,7 +152,7 @@ function NavigationCode(): JSX.Element {
                         path={homeProfileSettingsRoute}
                         stackPresentation='modal'
                         navBarConfig={
-                            <PlatformBarConfig title='Modal' backTitle='Back'>
+                            <PlatformBarConfig title='Modal'>
                                 <PlatformBarRightView>
                                     <NavigationBarButton>Right</NavigationBarButton>
                                 </PlatformBarRightView>
