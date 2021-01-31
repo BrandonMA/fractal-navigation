@@ -1,6 +1,6 @@
 {
     "name": "@bma98/fractal-navigation",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "description": "Navigation library for react native",
     "author": "BrandonMA",
     "license": "MIT",
@@ -23,7 +23,7 @@
         "react": "~16.13.1",
         "react-is": "^16.13.1",
         "react-native-safe-area-context": "^3.1.9",
-        "react-native-screens": "^2.15.2",
+        "react-native-screens": "~2.15.0",
         "@bma98/fractal-ui": "^1.7.16"
     },
     "dependencies": {
