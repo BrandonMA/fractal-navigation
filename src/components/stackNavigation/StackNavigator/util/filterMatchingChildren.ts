@@ -1,12 +1,13 @@
 import { NavigationRouteProps } from '../../../NavigationRoute/NavigationRoute';
 import { matchPath } from '../../../../react-router';
+import { removeSearchParameters } from '../../../../util/removeSearchParameters';
 
 export function filterMatchingChildren(children: Array<JSX.Element>, pathname: string): Array<JSX.Element> {
     return children.filter((child: JSX.Element) => {
         const { path = '/' } = child.props as NavigationRouteProps;
 
         const match = matchPath(pathname, {
-            path
+            path: removeSearchParameters(path)
         });
 
         return match != null;

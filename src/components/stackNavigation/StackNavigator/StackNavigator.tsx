@@ -1,4 +1,4 @@
-import React, { Children, useEffect, useMemo, useRef } from 'react';
+import React, { Children, useEffect, useRef } from 'react';
 import { useLocation } from '../../../react-router';
 import { ScreenStack, ScreenStackProps } from '../ScreenStack';
 import { filterMatchingChildren } from './util/filterMatchingChildren';
@@ -22,15 +22,13 @@ export function StackNavigator({ path = '', children, style, ...others }: StackN
     let childrenToRender = Children.toArray(children) as Array<JSX.Element>;
     childrenToRender = filterMatchingChildren(childrenToRender, pathname);
 
-    const finalStyle = useMemo(() => {
-        return [
-            style,
-            {
-                flex: 1,
-                ...marginInsets
-            }
-        ];
-    }, [style, marginInsets]);
+    const finalStyle = [
+        style,
+        {
+            flex: 1,
+            ...marginInsets
+        }
+    ];
 
     useEffect(() => {
         if (isRouteActive) {

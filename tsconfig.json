@@ -2,6 +2,7 @@
     "compilerOptions": {
         "outDir": "dist",
         "module": "esnext",
+        "target": "ES2015",
         "lib": ["dom", "esnext"],
         "moduleResolution": "node",
         "jsx": "react",
@@ -18,5 +19,6 @@
         "skipLibCheck": true
     },
     "include": ["src"],
-    "exclude": ["node_modules", "dist"]
+    "exclude": ["node_modules", "dist"],
+    "extends": "expo/tsconfig.base"
 }

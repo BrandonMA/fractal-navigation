@@ -20,7 +20,7 @@ import {
     SafeAreaScrollView
 } from './src';
 import { Entypo as BaseEntypo } from '@expo/vector-icons';
-import { BaseBox, Button, FractalThemeIdentifierContext, PaddedContainer, Text, TextField } from '@bma98/fractal-ui';
+import { BaseBox, Button, FractalThemeIdentifierContext, PaddedContainer, Text } from '@bma98/fractal-ui';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Entypo = memo(BaseEntypo);
@@ -30,7 +30,7 @@ const Entypo = memo(BaseEntypo);
 const authenticationRoute = '/authentication';
 const baseRoute = '/app';
 const homeRoute = '/app/home';
-const homeProfileRoute = '/app/home/profile';
+const homeProfileRoute = '/app/home/profile?name=brandon';
 const homeProfileSettingsRoute = '/app/home/profile/settings';
 const computersRoute = '/app/computers';
 const feedRoute = '/app/feed';
@@ -40,10 +40,6 @@ const feedRoute = '/app/feed';
 function StackPush(): JSX.Element {
     const history = useHistory();
     return <Button variant='mainInteractiveColor' text='Stack push' onPress={() => history.push(homeProfileRoute)} />;
-}
-
-function Dummy(): JSX.Element {
-    return <TextField placeholder={'Prueba'} />;
 }
 
 function ModalPush(): JSX.Element {
@@ -123,7 +119,6 @@ function NavigationCode(): JSX.Element {
                                 <PaddedContainer>
                                     <BaseBox height={600} backgroundColor='black' marginBottom='m' />
                                     <StackPush />
-                                    <Dummy />
                                     <BaseBox height={600} backgroundColor='black' marginBottom='m' />
                                 </PaddedContainer>
                             </SafeAreaScrollView>
@@ -143,7 +138,6 @@ function NavigationCode(): JSX.Element {
                             <SafeAreaView>
                                 <PaddedContainer>
                                     <ModalPush />
-                                    <TextField placeholder={'Prueba'} />
                                 </PaddedContainer>
                             </SafeAreaView>
                         </StackScreenContent>
