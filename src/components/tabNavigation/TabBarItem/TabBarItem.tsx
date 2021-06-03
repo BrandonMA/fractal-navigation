@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { getTabBarItemComponent } from './util/getTabBarItemComponent';
 import { getTabIconSize } from './util/getTabIconSize';
-import { useWidthSizeGroup, getValueForLargeSize } from '@bma98/size-class';
+import { useWidthSizeGroup, getValueForLargeSizeType } from '@bma98/size-class';
 import { useGoToTab } from './hooks/useGoToTab';
 import { TabBarItemProps } from './types/TabBarItemProps';
 import { useIsRouteActive } from '../../../hooks/useIsRouteActive';
@@ -24,7 +24,7 @@ export const TabBarItem = memo(
         const spacerSize =
             tabBarPosition !== 'bottom'
                 ? tabBarItemCompactSpacerSize
-                : getValueForLargeSize(widthSizeGroup[0], tabBarItemLargeSpacerSize, tabBarItemCompactSpacerSize);
+                : getValueForLargeSizeType(widthSizeGroup[0], tabBarItemLargeSpacerSize, tabBarItemCompactSpacerSize);
         const goToTab = useGoToTab(path, isRouteActive);
         const { colors } = useTheme<FractalTheme>();
         const tabBarItemColorIdentifier = isRouteActive ? 'tabBarItemActive' : 'tabBarItemInactive';
