@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useTabBarItemHistory } from '../../../../hooks';
+import { useTabBarItemsHistory } from '../../../../hooks';
 import { useHistory, useLocation } from '../../../../react-router';
 
 // This function will try to preserve the tab state when jumping between multiple ones.
@@ -8,7 +8,7 @@ import { useHistory, useLocation } from '../../../../react-router';
 // We use a reference as there is no need to re render if the value changes.
 export function useGoToTab(rootTabItemPath: string, active: boolean): () => void {
     const history = useHistory();
-    const [tabBarHistory, setTabBarHistory] = useTabBarItemHistory();
+    const [tabBarHistory, setTabBarHistory] = useTabBarItemsHistory();
     const previouslyActiveTabItemPath = tabBarHistory.get(rootTabItemPath);
     const currentPathname = useLocation().pathname;
 

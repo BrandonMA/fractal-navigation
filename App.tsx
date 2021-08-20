@@ -18,7 +18,7 @@ import {
     TabNavigator,
     TabScreen,
     SafeAreaScrollView,
-    useTabBarItemHistory
+    useTabBarItemsHistory
 } from './src';
 import { Entypo as BaseEntypo } from '@expo/vector-icons';
 import { BaseBox, Button, FractalThemeIdentifierContext, PaddedContainer, Text, TextField } from '@bma98/fractal-ui';
@@ -39,7 +39,7 @@ const feedRoute = '/app/feed';
 // Navigation Example
 
 function CleanTabBarHistoryForFirstTab(): ReactElement {
-    const [, setTabBarHistory] = useTabBarItemHistory();
+    const [, setTabBarHistory] = useTabBarItemsHistory();
     const onPress = () => {
         setTabBarHistory((history) => {
             const newHistory = new Map(history);
@@ -97,9 +97,10 @@ function ComputersScreen(): JSX.Element {
     const [, setCurrentThemeIdentifier] = useContext(FractalThemeIdentifierContext);
     const [, setTabBarHidden] = useContext(TabBarHiddenContext);
 
-    const toggleTheme = useCallback(() => setCurrentThemeIdentifier((currentValue) => (currentValue === 'light' ? 'dark' : 'light')), [
-        setCurrentThemeIdentifier
-    ]);
+    const toggleTheme = useCallback(
+        () => setCurrentThemeIdentifier((currentValue) => (currentValue === 'light' ? 'dark' : 'light')),
+        [setCurrentThemeIdentifier]
+    );
 
     const toggleTabBar = useCallback(() => setTabBarHidden((currentValue) => !currentValue), [setTabBarHidden]);
 
