@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export interface TabScreenProps {
     children: JSX.Element;
     path: string;

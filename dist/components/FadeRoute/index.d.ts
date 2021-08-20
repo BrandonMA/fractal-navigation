@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { RouteProps } from '../../react-router';
 interface FadeRouteProps extends Omit<RouteProps, 'children'> {
     children: JSX.Element;

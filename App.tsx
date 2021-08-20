@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useContext, useState } from 'react';
+import React, { memo, ReactElement, useCallback, useContext, useState } from 'react';
 import { registerRootComponent } from 'expo';
 import {
     FractalNavigationRoot,
@@ -17,7 +17,8 @@ import {
     TabBarItem,
     TabNavigator,
     TabScreen,
-    SafeAreaScrollView
+    SafeAreaScrollView,
+    useTabBarItemHistory
 } from './src';
 import { Entypo as BaseEntypo } from '@expo/vector-icons';
 import { BaseBox, Button, FractalThemeIdentifierContext, PaddedContainer, Text, TextField } from '@bma98/fractal-ui';
@@ -36,6 +37,19 @@ const computersRoute = '/app/computers';
 const feedRoute = '/app/feed';
 
 // Navigation Example
+
+function CleanTabBarHistoryForFirstTab(): ReactElement {
+    const [, setTabBarHistory] = useTabBarItemHistory();
+    const onPress = () => {
+        setTabBarHistory((history) => {
+            const newHistory = new Map(history);
+            newHistory.set(homeRoute, homeRoute);
+            return newHistory;
+        });
+    };
+
+    return <Button text='Reset first tab state' onPress={onPress} />;
+}
 
 function StackPush(): JSX.Element {
     const history = useHistory();
@@ -174,6 +188,7 @@ function NavigationCode(): JSX.Element {
                 <SafeAreaView>
                     <PaddedContainer>
                         <Text>News feed!</Text>
+                        <CleanTabBarHistoryForFirstTab />
                     </PaddedContainer>
                 </SafeAreaView>
             </TabScreen>

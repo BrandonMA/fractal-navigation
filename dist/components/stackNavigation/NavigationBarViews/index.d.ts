@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { ViewProps } from 'react-native';
 interface Props extends Omit<ViewProps, 'children'> {
     children?: JSX.Element | Array<JSX.Element>;

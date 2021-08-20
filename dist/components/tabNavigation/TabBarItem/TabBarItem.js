@@ -23,7 +23,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 import React, { memo } from 'react';
 import { getTabBarItemComponent } from './util/getTabBarItemComponent';
 import { getTabIconSize } from './util/getTabIconSize';
-import { useWidthSizeGroup, getValueForLargeSizeType } from '@bma98/size-class';
+import { useWidthSizeGroup, getValueForLargeSize } from '@bma98/size-class';
 import { useGoToTab } from './hooks/useGoToTab';
 import { useIsRouteActive } from '../../../hooks/useIsRouteActive';
 import { BaseBox, Text } from '@bma98/fractal-ui';
@@ -41,7 +41,7 @@ export var TabBarItem = memo(function (props) {
     var tabBarPosition = useTabBarPosition();
     var spacerSize = tabBarPosition !== 'bottom'
         ? tabBarItemCompactSpacerSize
-        : getValueForLargeSizeType(widthSizeGroup[0], tabBarItemLargeSpacerSize, tabBarItemCompactSpacerSize);
+        : getValueForLargeSize(widthSizeGroup[0], tabBarItemLargeSpacerSize, tabBarItemCompactSpacerSize);
     var goToTab = useGoToTab(path, isRouteActive);
     var colors = useTheme().colors;
     var tabBarItemColorIdentifier = isRouteActive ? 'tabBarItemActive' : 'tabBarItemInactive';

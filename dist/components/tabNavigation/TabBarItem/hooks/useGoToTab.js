@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useEffect } from 'react';
+import { useTabBarItemHistory } from '../../../../hooks';
 import { useHistory, useLocation } from '../../../../react-router';
 // This function will try to preserve the tab state when jumping between multiple ones.
 // Whenever the currentPathname changes, and we can consider the tab item as active
@@ -6,24 +7,26 @@ import { useHistory, useLocation } from '../../../../react-router';
 // We use a reference as there is no need to re render if the value changes.
 export function useGoToTab(rootTabItemPath, active) {
     var history = useHistory();
-    var previouslyActiveTabItemPath = useRef(null);
+    var _a = useTabBarItemHistory(), tabBarHistory = _a[0], setTabBarHistory = _a[1];
+    var previouslyActiveTabItemPath = tabBarHistory.get(rootTabItemPath);
     var currentPathname = useLocation().pathname;
-    var goToTab = useCallback(function () {
-        var _a;
-        if (rootTabItemPath != null) {
-            if (previouslyActiveTabItemPath.current === currentPathname) {
-                history.replace(rootTabItemPath);
-            }
-            else {
-                history.replace((_a = previouslyActiveTabItemPath.current) !== null && _a !== void 0 ? _a : rootTabItemPath);
-            }
+    var goToTab = function () {
+        if (previouslyActiveTabItemPath === currentPathname) {
+            history.replace(rootTabItemPath);
         }
-    }, [rootTabItemPath, history, previouslyActiveTabItemPath, currentPathname]);
+        else {
+            history.replace(previouslyActiveTabItemPath !== null && previouslyActiveTabItemPath !== void 0 ? previouslyActiveTabItemPath : rootTabItemPath);
+        }
+    };
     useEffect(function () {
         if (rootTabItemPath != null && currentPathname.includes(rootTabItemPath) && active) {
-            previouslyActiveTabItemPath.current = currentPathname;
+            setTabBarHistory(function (tabBarHistory) {
+                var newHistory = new Map(tabBarHistory);
+                newHistory.set(rootTabItemPath, currentPathname);
+                return newHistory;
+            });
         }
-    }, [rootTabItemPath, active, currentPathname, previouslyActiveTabItemPath]);
+    }, [rootTabItemPath, active, currentPathname, setTabBarHistory]);
     return goToTab;
 }
 //# sourceMappingURL=useGoToTab.js.map

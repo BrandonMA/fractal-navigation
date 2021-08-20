@@ -1,6 +1,6 @@
 import React, { memo, useMemo } from 'react';
 import { sharedTabBarItemStyles } from './SharedTabBarItemStyles';
-import { SizeGroup, getValueForLargeSizeType } from '@bma98/size-class';
+import { SizeGroup, getValueForLargeSize } from '@bma98/size-class';
 import { Dimensions, Pressable } from 'react-native';
 import { useTabBarPosition } from '../../../../hooks/useTabBarPosition';
 
@@ -28,7 +28,7 @@ export const BasicTabBarItem = memo(
             return {
                 ...sharedTabBarItemStyles,
                 flexGrow: 1,
-                flexDirection: tabBarPosition !== 'bottom' ? 'column' : getValueForLargeSizeType(size, 'row', 'column')
+                flexDirection: tabBarPosition !== 'bottom' ? 'column' : getValueForLargeSize(size, 'row', 'column')
             };
         }, [size, tabBarPosition]);
 

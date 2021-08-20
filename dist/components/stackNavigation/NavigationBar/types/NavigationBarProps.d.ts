@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export interface NavigationBarProps {
     children?: JSX.Element | Array<JSX.Element>;
     hidden?: boolean;

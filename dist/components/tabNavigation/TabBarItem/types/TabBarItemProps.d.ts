@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { PressableProps } from 'react-native';
 import { TabBarItemVariant } from './TabBarItemVariant';
 export interface TabBarItemProps extends PressableProps {

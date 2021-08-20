@@ -24,6 +24,7 @@ import React, { useMemo } from 'react';
 import { ScreenContainer } from 'react-native-screens';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { BaseBox } from '@bma98/fractal-ui';
+import { TabBarItemsHistoryProvider } from '../../context/TabBarItemsHistoryProvider';
 export function TabNavigator(_a) {
     var tabBar = _a.tabBar, children = _a.children, style = _a.style, others = __rest(_a, ["tabBar", "children", "style"]);
     var finalStyle = useMemo(function () {
@@ -34,9 +35,10 @@ export function TabNavigator(_a) {
             }
         ];
     }, [style]);
-    return (React.createElement(SafeAreaProvider, null,
-        React.createElement(BaseBox, { flex: 1, overflow: 'hidden' },
-            React.createElement(ScreenContainer, __assign({}, others, { style: finalStyle }), children),
-            tabBar)));
+    return (React.createElement(TabBarItemsHistoryProvider, null,
+        React.createElement(SafeAreaProvider, null,
+            React.createElement(BaseBox, { flex: 1, overflow: 'hidden' },
+                React.createElement(ScreenContainer, __assign({}, others, { style: finalStyle }), children),
+                tabBar))));
 }
 //# sourceMappingURL=TabNavigator.js.map

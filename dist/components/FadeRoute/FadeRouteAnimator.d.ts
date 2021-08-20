@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { match } from '../../react-router';
 import { Animated, ViewStyle } from 'react-native';
 interface FadeRouteAnimator {

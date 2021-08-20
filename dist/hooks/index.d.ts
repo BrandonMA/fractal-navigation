@@ -8,3 +8,4 @@ export * from './useTabBarIsHidden';
 export * from './useTabBarPosition';
 export * from './useHideScreenAnimated';
 export * from './useStackPresentationType';
+export * from './useTabBarItemHistory';

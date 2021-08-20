@@ -27,7 +27,7 @@
         "@bma98/fractal-ui": "^1.7.16"
     },
     "dependencies": {
-        "@bma98/size-class": "^2.2.0",
+        "@bma98/size-class": "2.1.0",
         "@shopify/restyle": "^1.4.0",
         "react-router-dom": "^5.2.0",
         "react-router-native": "^5.2.0",
@@ -88,5 +88,8 @@
         "react",
         "native",
         "navigation"
-    ]
+    ],
+    "resolutions": {
+        "@bma98/size-class": "2.1.0"
+    }
 }

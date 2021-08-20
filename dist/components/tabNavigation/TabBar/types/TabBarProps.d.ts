@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { Animated, ViewProps } from 'react-native';
 import { TabBarVariant } from './TabBarVariant';
 import { TabBarPosition } from '../../../../context/TabBarPositionProvider/types/TabBarPosition';

@@ -11,7 +11,7 @@ var __assign = (this && this.__assign) || function () {
 };
 import React, { memo, useMemo } from 'react';
 import { sharedTabBarItemStyles } from './SharedTabBarItemStyles';
-import { getValueForLargeSizeType } from '@bma98/size-class';
+import { getValueForLargeSize } from '@bma98/size-class';
 import { Dimensions, Pressable } from 'react-native';
 import { useTabBarPosition } from '../../../../hooks/useTabBarPosition';
 export var BasicTabBarItem = memo(function (props) {
@@ -26,7 +26,7 @@ export var BasicTabBarItem = memo(function (props) {
         };
     }, [highlightColor]);
     var style = useMemo(function () {
-        return __assign(__assign({}, sharedTabBarItemStyles), { flexGrow: 1, flexDirection: tabBarPosition !== 'bottom' ? 'column' : getValueForLargeSizeType(size, 'row', 'column') });
+        return __assign(__assign({}, sharedTabBarItemStyles), { flexGrow: 1, flexDirection: tabBarPosition !== 'bottom' ? 'column' : getValueForLargeSize(size, 'row', 'column') });
     }, [size, tabBarPosition]);
     return React.createElement(Pressable, __assign({}, props, { style: style, android_ripple: ripple }));
 });

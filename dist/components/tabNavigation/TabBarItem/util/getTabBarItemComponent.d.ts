@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { PressableProps } from 'react-native';
 import { BasicTabBarItemProps } from '../components/BasicTabBarItem';
 import { CircularTabBarItemProps } from '../components/CircularTabBarItem';
